@@ -26,6 +26,7 @@ python predict.py --data_path ../DATA/MIND-Small --test_batch_size 100 --max_tok
 ```
 - The first line is used to train the model on the training set and evaluate it on the validation set at each epoch. During this process, the model with the best performance on the validation set will be stored.
 - The second line is used to evaluate the "best" model on the testing set to obtain the performance evaluation.
+
 We implement the source code via the <a href="https://pytorch.org/tutorials/beginner/ddp_series_intro.html">Distributed Data Parallel (DDP)</a> technology provided by pytorch. Hence, our codes is a Multi-GPUs version. We encourage you to overwrite our code to obtain a Single-GPU version.
 
 ### Enviroments
