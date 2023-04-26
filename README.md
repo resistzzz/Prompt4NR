@@ -17,6 +17,21 @@ Source code for SIGIR 2023 paper: Prompt Learning for News Recommendation
 
 <img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/templates_table.png" />
 
+### Dataset
+
+The experiments are based on public dataset <a href="https://msnews.github.io/">MIND</a>, we use the small version MIND-Small.
+
+For our paper, we have preprocessed the original dataset and store it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though I use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
+
+- train.txt: training set
+- val.txt: validation set
+- test.txt: testing set
+- news.txt: containing information of all news
+
+I have shared our preprocessed dataset on Google Drive as follows: 
+
+<https://drive.google.com/drive/folders/1_3ffZvEPKD5deHbTU_mVGp6uEaLhyM7c?usp=sharing>
+
 ### How to Run These codes
 In each directory, there is a script called ``run.sh`` that can run the codes for the corresponding template.
 Take “Discrete-Relevance” template as an example, the ``run.sh`` file is shown as follows:
@@ -37,4 +52,11 @@ We implement the source code via the <a href="https://pytorch.org/tutorials/begi
 
 ### Citation
 If you use this codes, please cite our paper!
-
+```
+@article{zhang2023prompt,
+  title={Prompt Learning for News Recommendation},
+  author={Zhang, Zizhuo and Wang, Bang},
+  journal={arXiv preprint arXiv:2304.05263},
+  year={2023}
+}
+```
