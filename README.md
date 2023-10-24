@@ -53,10 +53,14 @@ We implement the source code via the <a href="https://pytorch.org/tutorials/begi
 ### Citation
 If you use this codes, please cite our paper!
 ```
-@article{zhang2023prompt,
-  title={Prompt Learning for News Recommendation},
-  author={Zhang, Zizhuo and Wang, Bang},
-  journal={arXiv preprint arXiv:2304.05263},
-  year={2023}
+@inproceedings{zhang2023prompt,
+    author = {Zhang, Zizhuo and Wang, Bang},
+    title = {Prompt Learning for News Recommendation},
+    year = {2023},
+    booktitle = {Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval},
+    pages = {227–237},
+    numpages = {11},
+    location = {Taipei, Taiwan},
+    series = {SIGIR '23}
 }
 ```
