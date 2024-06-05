@@ -1,0 +1,24 @@
+Traceback (most recent call last):
+  File "main-multigpu.py", line 11, in <module>
+    from tqdm import tqdm
+ModuleNotFoundError: No module named 'tqdm'
+Traceback (most recent call last):
+  File "predict.py", line 7, in <module>
+    from tqdm import tqdm
+ModuleNotFoundError: No module named 'tqdm'
+srun: error: gcn29: task 0: Exited with exit code 1
+srun: Terminating StepId=6508149.0
+
+JOB STATISTICS
+==============
+Job ID: 6508149
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: FAILED (exit code 1)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:02:24 core-walltime
+Job Wall-clock time: 00:00:08
+Memory Utilized: 1.20 MB
+Memory Efficiency: 0.00% of 120.00 GB
