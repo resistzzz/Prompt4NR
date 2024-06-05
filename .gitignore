@@ -1,5 +1,6 @@
-# exclude all datasets
+# exclude all datasets to prevent submitting too large datasets
 DATA/*
 
 # exception to the rule
 !DATA/.gitkeep 
+!DATA/MIND-Small
