@@ -1,0 +1,18 @@
+slurmstepd: error: execve(): python: No such file or directory
+srun: error: gcn57: task 0: Exited with exit code 2
+srun: Terminating StepId=6507248.0
+
+JOB STATISTICS
+==============
+Job ID: 6507248
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: RUNNING
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:02:24 core-walltime
+Job Wall-clock time: 00:00:08
+Memory Utilized: 1.12 MB
+Memory Efficiency: 0.00% of 120.00 GB
+WARNING: Efficiency statistics may be misleading for RUNNING jobs.
