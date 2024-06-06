@@ -13,4 +13,9 @@ the 'module load <package__name>' command. If you are uncertain if a package is
 already available 
 on the system, please use 'module avail' or 'module spider' to search for it.
 ============================================================================================== 
-Collecting package metadata (repodata.json): ...working... 
+Collecting package metadata (repodata.json): ...working... WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.7.1.*, but conda is ignoring the .* and treating it as 1.7.1
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.6.0.*, but conda is ignoring the .* and treating it as 1.6.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.9.0.*, but conda is ignoring the .* and treating it as 1.9.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.8.0.*, but conda is ignoring the .* and treating it as 1.8.0
+done
+Solving environment: ...working... 
