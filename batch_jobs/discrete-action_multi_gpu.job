@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --partition=gpu
-#SBATCH --gpus=1
+#SBATCH --gpus=2
 #SBATCH --job-name=DiscreteAction1gpu
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
 #SBATCH --time=05:00:00
-#SBATCH --output=discrete-action_output_%A.out
+#SBATCH --output=discrete-action_output_multi_gpu%A.out
 
 module purge
 module load 2022
