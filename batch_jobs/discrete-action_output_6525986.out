@@ -1,0 +1,113 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+
+CondaValueError: prefix already exists: /home/scur1570/.conda/envs/recsys
+
+Traceback (most recent call last):
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1076, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/__init__.py", line 19, in <module>
+    from . import (
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/mt5/__init__.py", line 40, in <module>
+    from ..t5.tokenization_t5_fast import T5TokenizerFast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/t5/tokenization_t5_fast.py", line 23, in <module>
+    from ...tokenization_utils_fast import PreTrainedTokenizerFast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/tokenization_utils_fast.py", line 25, in <module>
+    import tokenizers.pre_tokenizers as pre_tokenizers_fast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/tokenizers/__init__.py", line 79, in <module>
+    from .tokenizers import (
+ImportError: libssl.so.3: cannot open shared object file: No such file or directory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "main-multigpu.py", line 16, in <module>
+    from transformers import BertTokenizer
+  File "<frozen importlib._bootstrap>", line 1032, in _handle_fromlist
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1066, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1081, in _get_module
+    ) from e
+RuntimeError: Failed to import transformers.models.bert because of the following error (look up to see its traceback):
+libssl.so.3: cannot open shared object file: No such file or directory
+Traceback (most recent call last):
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1076, in _get_module
+    return importlib.import_module("." + module_name, self.__name__)
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 953, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 1006, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/__init__.py", line 19, in <module>
+    from . import (
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/mt5/__init__.py", line 40, in <module>
+    from ..t5.tokenization_t5_fast import T5TokenizerFast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/models/t5/tokenization_t5_fast.py", line 23, in <module>
+    from ...tokenization_utils_fast import PreTrainedTokenizerFast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/tokenization_utils_fast.py", line 25, in <module>
+    import tokenizers.pre_tokenizers as pre_tokenizers_fast
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/tokenizers/__init__.py", line 79, in <module>
+    from .tokenizers import (
+ImportError: libssl.so.3: cannot open shared object file: No such file or directory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "predict.py", line 12, in <module>
+    from transformers import BertTokenizer
+  File "<frozen importlib._bootstrap>", line 1032, in _handle_fromlist
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1066, in __getattr__
+    module = self._get_module(self._class_to_module[name])
+  File "/home/scur1570/.conda/envs/recsys/lib/python3.7/site-packages/transformers/utils/import_utils.py", line 1081, in _get_module
+    ) from e
+RuntimeError: Failed to import transformers.models.bert because of the following error (look up to see its traceback):
+libssl.so.3: cannot open shared object file: No such file or directory
+srun: error: gcn53: task 0: Exited with exit code 1
+srun: Terminating StepId=6525986.0
+
+JOB STATISTICS
+==============
+Job ID: 6525986
+Cluster: snellius
+User/Group: scur1570/scur1570
+State: RUNNING
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:05:42 core-walltime
+Job Wall-clock time: 00:00:19
+Memory Utilized: 0.00 MB (estimated maximum)
+Memory Efficiency: 0.00% of 120.00 GB (120.00 GB/node)
+WARNING: Efficiency statistics may be misleading for RUNNING jobs.
