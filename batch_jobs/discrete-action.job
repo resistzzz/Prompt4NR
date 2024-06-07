@@ -11,14 +11,15 @@ module purge
 module load 2022
 module load Anaconda3/2022.05
 
-# Your job starts in the directory where you call sbatch
-cd ../Discrete-Action
-
-# Create environment
-conda env create -f ../recsys_gpu.yml
-
 # Activate environment
 source activate recsys
+
+# Path of framework
+fw = $HOME/Prompt4NR
+template = $fw/Discrete-Action
+
+# Change directory to the model template
+cd $template
 
 # Check whether the GPU is available
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
