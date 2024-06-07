@@ -1,28 +1,32 @@
 #!/bin/bash
 #SBATCH --partition=gpu
 #SBATCH --gpus=2
-#SBATCH --job-name=DiscreteAction1gpu
+#SBATCH --job-name=DiscreteActionMultigpu
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
 #SBATCH --time=05:00:00
-#SBATCH --output=discrete-action_output_multi_gpu%A.out
+#SBATCH --output=discrete-action_output_multi_gpu_%A.out
 
 module purge
 module load 2022
 module load Anaconda3/2022.05
 
-# Your job starts in the directory where you call sbatch
-cd ../Discrete-Action
-
-# Unnecessary because run file already specifies the datasets path
-#python3 --data_dir MIND-Small
-
-# Create environment
-conda env create -f ../recsys_gpu.yml
-
 # Activate environment
 source activate recsys
 
+# Path of framework
+FW = $HOME/Prompt4NR
+TEMPLATE = $fw/Discrete-Action
+
+# Change directory to the model template
+cd $TEMPLATE
+
+# Copy datasets to temp folder to save read/write operations computational costs
+export DATA_SET = /MIND-Small
+mkdir $TMPDIR$DATA_SET
+rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
+
+# Check whether the GPU is available
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
 
 # Test whether bash script is ran

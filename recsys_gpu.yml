@@ -1,6 +1,7 @@
 name: recsys
 channels:
   - pytorch
+  - huggingface
   - nvidia
   - conda-forge
   - defaults

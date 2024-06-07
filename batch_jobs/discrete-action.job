@@ -15,11 +15,16 @@ module load Anaconda3/2022.05
 source activate recsys
 
 # Path of framework
-fw = $HOME/Prompt4NR
-template = $fw/Discrete-Action
+FW = $HOME/Prompt4NR
+TEMPLATE = $fw/Discrete-Action
 
 # Change directory to the model template
-cd $template
+cd $TEMPLATE
+
+# Copy datasets to temp folder to save read/write operations computational costs
+export DATA_SET = /MIND-Small
+mkdir $TMPDIR$DATA_SET
+rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 
 # Check whether the GPU is available
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
