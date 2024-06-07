@@ -30,8 +30,8 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
 
 # Test whether bash script is ran
-# srun bash test.sh
+srun bash test.sh
 
 # Run shell script that calls python scripts that train model and predicts
-srun bash run_py3.sh
+# srun bash run_py3.sh
 
