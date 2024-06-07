@@ -4,7 +4,7 @@
 #SBATCH --job-name=SetupEnv
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
-#SBATCH --time=05:00:00
+#SBATCH --time=00:30:00
 #SBATCH --output=setup-env_output_%A.out
 
 module purge
@@ -12,7 +12,7 @@ module load 2022
 module load Anaconda3/2022.05
 
 # Path of framework
-fw = $HOME/Prompt4NR
+FW=$HOME/Prompt4NR
 
 # Create environment
-conda env create -f $fw/recsys_gpu.yml
+conda env create -f $FW/recsys_gpu.yml
