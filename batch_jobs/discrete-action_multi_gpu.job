@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --partition=gpu
-#SBATCH --gpus=2
+#SBATCH --gpus=4
 #SBATCH --job-name=DiscreteActionMultigpu
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
-#SBATCH --time=10:00:00
+#SBATCH --time=05:00:00
 #SBATCH --output=discrete-action_output_multi_gpu_%A.out
 
 module purge
@@ -23,7 +23,11 @@ cd $TEMPLATE
 
 # Copy datasets to temp folder to save read/write operations computational costs
 export DATA_SET=/MIND-Small
-mkdir $TMPDIR$DATA_SET
+
+if [! -d "$TMPDIR$DATA_SET" ]; then
+    mkdir $TMPDIR$DATA_SET
+fi
+
 rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 
 # Check whether the GPU is available

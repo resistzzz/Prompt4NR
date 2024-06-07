@@ -23,7 +23,11 @@ cd $TEMPLATE
 
 # Copy datasets to temp folder to save read/write operations computational costs
 export DATA_SET=/MIND-Small
-mkdir $TMPDIR$DATA_SET
+
+if [! -d "$TMPDIR$DATA_SET" ]; then
+    mkdir $TMPDIR$DATA_SET
+fi
+
 rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 
 # Check whether the GPU is available
