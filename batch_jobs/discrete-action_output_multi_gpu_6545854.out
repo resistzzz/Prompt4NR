@@ -1,0 +1,45 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Could not find conda environment: recsys
+You can list all discoverable environments with `conda info --envs`.
+
+/var/spool/slurm/slurmd/job6545854/slurm_script: line 18: FW: command not found
+/var/spool/slurm/slurmd/job6545854/slurm_script: line 19: TEMPLATE: command not found
+/var/spool/slurm/slurmd/job6545854/slurm_script: line 25: export: `=': not a valid identifier
+/var/spool/slurm/slurmd/job6545854/slurm_script: line 25: export: `/MIND-Small': not a valid identifier
+mkdir: cannot create directory '/scratch-local/scur1608.6545854': File exists
+rsync: change_dir "/DATA" failed: No such file or directory (2)
+rsync error: some files/attrs were not transferred (see previous errors) (code 23) at main.c(1189) [sender=3.1.3]
+/sw/arch/RHEL8/EB_production/2022/software/Anaconda3/2022.05/bin/python3: can't open file '/gpfs/home3/scur1608/main-multigpu.py': [Errno 2] No such file or directory
+srun: error: gcn34: task 0: Exited with exit code 2
+srun: Terminating StepId=6545854.0
+/sw/arch/RHEL8/EB_production/2022/software/Anaconda3/2022.05/bin/python3: can't open file '/gpfs/home3/scur1608/predict.py': [Errno 2] No such file or directory
+srun: error: gcn34: task 0: Exited with exit code 2
+srun: Terminating StepId=6545854.1
+
+JOB STATISTICS
+==============
+Job ID: 6545854
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: FAILED (exit code 2)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:01
+CPU Efficiency: 0.40% of 00:04:12 core-walltime
+Job Wall-clock time: 00:00:14
+Memory Utilized: 1.21 MB
+Memory Efficiency: 0.00% of 240.00 GB
