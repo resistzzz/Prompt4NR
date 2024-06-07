@@ -1,0 +1,37 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Collecting package metadata (repodata.json): ...working... WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.6.0.*, but conda is ignoring the .* and treating it as 1.6.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.9.0.*, but conda is ignoring the .* and treating it as 1.9.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.7.1.*, but conda is ignoring the .* and treating it as 1.7.1
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.8.0.*, but conda is ignoring the .* and treating it as 1.8.0
+done
+Solving environment: ...working... slurmstepd: error: *** JOB 6529720 ON gcn11 CANCELLED AT 2024-06-06T22:59:05 DUE TO TIME LIMIT ***
+slurmstepd: error: container_p_join: setns failed for /slurm/6529720/.ns: Invalid argument
+slurmstepd: error: container_g_join(6529720): Invalid argument
+
+JOB STATISTICS
+==============
+Job ID: 6529720
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: TIMEOUT (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 3-18:04:30 core-walltime
+Job Wall-clock time: 05:00:15
+Memory Utilized: 11.34 GB
+Memory Efficiency: 9.45% of 120.00 GB

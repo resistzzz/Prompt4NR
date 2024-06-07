@@ -12,6 +12,7 @@ dependencies:
   - torchvision=0.16.0
   - torchaudio=2.1.0
   - pip:
+    - transformers==4.27.0
     - pytorch-lightning==2.1.0
     - tensorboard==2.14.1
     - tabulate>=0.8.9
