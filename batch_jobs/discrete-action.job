@@ -29,9 +29,7 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 # Check whether the GPU is available
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
 
-# Test whether bash script is ran
-# srun bash test.sh
-
-# Run shell script that calls python scripts that train model and predicts
-srun bash run_py3.sh
+# Run python scripts that train model and predicts. Content of run_py3.sh
+srun python3 -u main-multigpu.py --data_path $TMPDIR$DATA_SET --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --model_save True
+srun python3 -u predict.py --data_path $TMPDIR$DATA_SET --test_batch_size 100 --max_tokens 500 --model_file ./temp/BestModel.pt --log True
 
