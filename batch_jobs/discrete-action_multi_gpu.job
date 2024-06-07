@@ -4,7 +4,7 @@
 #SBATCH --job-name=DiscreteActionMultigpu
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
-#SBATCH --time=05:00:00
+#SBATCH --time=10:00:00
 #SBATCH --output=discrete-action_output_multi_gpu_%A.out
 
 module purge

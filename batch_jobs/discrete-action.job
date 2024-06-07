@@ -33,6 +33,5 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 # srun bash test.sh
 
 # Run shell script that calls python scripts that train model and predicts
-
 srun bash run_py3.sh
 
