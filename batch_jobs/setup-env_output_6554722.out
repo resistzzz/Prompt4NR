@@ -1,0 +1,707 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Collecting package metadata (repodata.json): ...working... WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.8.0.*, but conda is ignoring the .* and treating it as 1.8.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.6.0.*, but conda is ignoring the .* and treating it as 1.6.0
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.7.1.*, but conda is ignoring the .* and treating it as 1.7.1
+WARNING conda.models.version:get_matcher(535): Using .* with relational operator is superfluous and deprecated and will be removed in a future version of conda. Your spec was 1.9.0.*, but conda is ignoring the .* and treating it as 1.9.0
+done
+Solving environment: ...working... done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.12.0
+  latest version: 24.5.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+Downloading and Extracting Packages
+lcms2-2.16           | 239 KB    |            |   0% lcms2-2.16           | 239 KB    | ########## | 100% lcms2-2.16           | 239 KB    | ########## | 100% 
+networkx-3.3         | 1.1 MB    |            |   0% networkx-3.3         | 1.1 MB    | ########## | 100% networkx-3.3         | 1.1 MB    | ########## | 100% 
+libxml2-2.12.7       | 688 KB    |            |   0% libxml2-2.12.7       | 688 KB    | ########## | 100% libxml2-2.12.7       | 688 KB    | ########## | 100% 
+xorg-kbproto-1.0.7   | 27 KB     |            |   0% xorg-kbproto-1.0.7   | 27 KB     | ########## | 100% 
+blas-1.0             | 1 KB      |            |   0% blas-1.0             | 1 KB      | ########## | 100% 
+pyyaml-6.0.1         | 196 KB    |            |   0% pyyaml-6.0.1         | 196 KB    | ########## | 100% pyyaml-6.0.1         | 196 KB    | ########## | 100% 
+charset-normalizer-3 | 46 KB     |            |   0% charset-normalizer-3 | 46 KB     | ########## | 100% charset-normalizer-3 | 46 KB     | ########## | 100% 
+aom-3.9.0            | 2.6 MB    |            |   0% aom-3.9.0            | 2.6 MB    | ########## | 100% aom-3.9.0            | 2.6 MB    | ########## | 100% 
+wheel-0.43.0         | 57 KB     |            |   0% wheel-0.43.0         | 57 KB     | ########## | 100% wheel-0.43.0         | 57 KB     | ########## | 100% 
+libglib-2.80.2       | 3.7 MB    |            |   0% libglib-2.80.2       | 3.7 MB    | ########## | 100% libglib-2.80.2       | 3.7 MB    | ########## | 100% 
+libffi-3.4.2         | 57 KB     |            |   0% libffi-3.4.2         | 57 KB     | ########## | 100% 
+ffmpeg-7.0.1         | 9.6 MB    |            |   0% ffmpeg-7.0.1         | 9.6 MB    | ########## | 100% ffmpeg-7.0.1         | 9.6 MB    | ########## | 100% 
+zstd-1.5.6           | 542 KB    |            |   0% zstd-1.5.6           | 542 KB    | ########## | 100% zstd-1.5.6           | 542 KB    | ########## | 100% 
+pip-23.3.1           | 1.3 MB    |            |   0% pip-23.3.1           | 1.3 MB    | ########## | 100% pip-23.3.1           | 1.3 MB    | ########## | 100% 
+libgfortran-ng-13.2. | 24 KB     |            |   0% libgfortran-ng-13.2. | 24 KB     | ########## | 100% libgfortran-ng-13.2. | 24 KB     | ########## | 100% 
+libnsl-2.0.1         | 33 KB     |            |   0% libnsl-2.0.1         | 33 KB     | ########## | 100% libnsl-2.0.1         | 33 KB     | ########## | 100% 
+zlib-1.3.1           | 91 KB     |            |   0% zlib-1.3.1           | 91 KB     | ########## | 100% zlib-1.3.1           | 91 KB     | ########## | 100% 
+libxcb-1.15          | 375 KB    |            |   0% libxcb-1.15          | 375 KB    | ########## | 100% libxcb-1.15          | 375 KB    | ########## | 100% 
+tokenizers-0.15.1    | 3.0 MB    |            |   0% tokenizers-0.15.1    | 3.0 MB    | ########## | 100% tokenizers-0.15.1    | 3.0 MB    | ########## | 100% 
+libiconv-1.17        | 689 KB    |            |   0% libiconv-1.17        | 689 KB    | ########## | 100% libiconv-1.17        | 689 KB    | ########## | 100% 
+libopenvino-tensorfl | 1.3 MB    |            |   0% libopenvino-tensorfl | 1.3 MB    | ########## | 100% libopenvino-tensorfl | 1.3 MB    | ########## | 100% 
+libexpat-2.6.2       | 72 KB     |            |   0% libexpat-2.6.2       | 72 KB     | ########## | 100% libexpat-2.6.2       | 72 KB     | ########## | 100% 
+xorg-libxfixes-5.0.3 | 18 KB     |            |   0% xorg-libxfixes-5.0.3 | 18 KB     | ########## | 100% 
+pillow-10.3.0        | 40.6 MB   |            |   0% pillow-10.3.0        | 40.6 MB   | ##2        |  23% pillow-10.3.0        | 40.6 MB   | #####4     |  54% pillow-10.3.0        | 40.6 MB   | ########## | 100% pillow-10.3.0        | 40.6 MB   | ########## | 100% 
+scipy-1.13.1         | 16.5 MB   |            |   0% scipy-1.13.1         | 16.5 MB   | ######5    |  66% scipy-1.13.1         | 16.5 MB   | ########## | 100% 
+typing_extensions-4. | 39 KB     |            |   0% typing_extensions-4. | 39 KB     | ########## | 100% typing_extensions-4. | 39 KB     | ########## | 100% 
+python_abi-3.11      | 6 KB      |            |   0% python_abi-3.11      | 6 KB      | ########## | 100% python_abi-3.11      | 6 KB      | ########## | 100% 
+libcusolver-11.4.1.4 | 96.5 MB   |            |   0% libcusolver-11.4.1.4 | 96.5 MB   | #6         |  16% libcusolver-11.4.1.4 | 96.5 MB   | ####3      |  43% libcusolver-11.4.1.4 | 96.5 MB   | ######9    |  69% libcusolver-11.4.1.4 | 96.5 MB   | #########3 |  93% libcusolver-11.4.1.4 | 96.5 MB   | ########## | 100% 
+fribidi-1.0.10       | 112 KB    |            |   0% fribidi-1.0.10       | 112 KB    | ########## | 100% 
+mkl-2022.1.0         | 129.7 MB  |            |   0% mkl-2022.1.0         | 129.7 MB  | #3         |  13% mkl-2022.1.0         | 129.7 MB  | ###1       |  32% mkl-2022.1.0         | 129.7 MB  | ####7      |  48% mkl-2022.1.0         | 129.7 MB  | ######7    |  67% mkl-2022.1.0         | 129.7 MB  | ########4  |  85% mkl-2022.1.0         | 129.7 MB  | ########## | 100% 
+pugixml-1.14         | 112 KB    |            |   0% pugixml-1.14         | 112 KB    | ########## | 100% pugixml-1.14         | 112 KB    | ########## | 100% 
+libabseil-20240116.2 | 1.2 MB    |            |   0% libabseil-20240116.2 | 1.2 MB    | #######5   |  75% libabseil-20240116.2 | 1.2 MB    | ########## | 100% 
+xorg-libsm-1.2.4     | 27 KB     |            |   0% xorg-libsm-1.2.4     | 27 KB     | ########## | 100% xorg-libsm-1.2.4     | 27 KB     | ########## | 100% 
+pytorch-mutex-1.0    | 3 KB      |            |   0% pytorch-mutex-1.0    | 3 KB      | ########## | 100% 
+fonts-conda-forge-1  | 4 KB      |            |   0% fonts-conda-forge-1  | 4 KB      | ########## | 100% 
+libnpp-11.8.0.86     | 147.8 MB  |            |   0% libnpp-11.8.0.86     | 147.8 MB  | 8          |   8% libnpp-11.8.0.86     | 147.8 MB  | #7         |  18% libnpp-11.8.0.86     | 147.8 MB  | ###8       |  38% libnpp-11.8.0.86     | 147.8 MB  | #####2     |  53% libnpp-11.8.0.86     | 147.8 MB  | ######4    |  65% libnpp-11.8.0.86     | 147.8 MB  | #######9   |  80% libnpp-11.8.0.86     | 147.8 MB  | #########2 |  92% libnpp-11.8.0.86     | 147.8 MB  | ########## | 100% 
+urllib3-2.2.1        | 92 KB     |            |   0% urllib3-2.2.1        | 92 KB     | ########## | 100% urllib3-2.2.1        | 92 KB     | ########## | 100% 
+gnutls-3.7.9         | 1.9 MB    |            |   0% gnutls-3.7.9         | 1.9 MB    | ########## | 100% gnutls-3.7.9         | 1.9 MB    | ########## | 100% 
+libopenvino-auto-bat | 107 KB    |            |   0% libopenvino-auto-bat | 107 KB    | ########## | 100% libopenvino-auto-bat | 107 KB    | ########## | 100% 
+yaml-0.2.5           | 87 KB     |            |   0% yaml-0.2.5           | 87 KB     | ########## | 100% 
+libcublas-11.11.3.6  | 364.0 MB  |            |   0% libcublas-11.11.3.6  | 364.0 MB  | 5          |   6% libcublas-11.11.3.6  | 364.0 MB  | #4         |  14% libcublas-11.11.3.6  | 364.0 MB  | ##1        |  22% libcublas-11.11.3.6  | 364.0 MB  | ##9        |  29% libcublas-11.11.3.6  | 364.0 MB  | ###5       |  36% libcublas-11.11.3.6  | 364.0 MB  | ####2      |  42% libcublas-11.11.3.6  | 364.0 MB  | ####9      |  50% libcublas-11.11.3.6  | 364.0 MB  | #####6     |  56% libcublas-11.11.3.6  | 364.0 MB  | ######2    |  63% libcublas-11.11.3.6  | 364.0 MB  | ######9    |  69% libcublas-11.11.3.6  | 364.0 MB  | #######5   |  75% libcublas-11.11.3.6  | 364.0 MB  | ########1  |  81% libcublas-11.11.3.6  | 364.0 MB  | ########6  |  87% libcublas-11.11.3.6  | 364.0 MB  | #########2 |  92% libcublas-11.11.3.6  | 364.0 MB  | #########8 |  99% libcublas-11.11.3.6  | 364.0 MB  | ########## | 100% 
+libopenvino-intel-cp | 10.4 MB   |            |   0% libopenvino-intel-cp | 10.4 MB   | ########## | 100% libopenvino-intel-cp | 10.4 MB   | ########## | 100% 
+mpmath-1.3.0         | 428 KB    |            |   0% mpmath-1.3.0         | 428 KB    | ########## | 100% mpmath-1.3.0         | 428 KB    | ########## | 100% 
+cuda-runtime-11.8.0  | 1 KB      |            |   0% cuda-runtime-11.8.0  | 1 KB      | ########## | 100% 
+ocl-icd-2.3.2        | 133 KB    |            |   0% ocl-icd-2.3.2        | 133 KB    | ########## | 100% ocl-icd-2.3.2        | 133 KB    | ########## | 100% 
+libopus-1.3.1        | 255 KB    |            |   0% libopus-1.3.1        | 255 KB    | ########## | 100% 
+bzip2-1.0.8          | 248 KB    |            |   0% bzip2-1.0.8          | 248 KB    | ########## | 100% bzip2-1.0.8          | 248 KB    | ########## | 100% 
+libidn2-2.3.7        | 124 KB    |            |   0% libidn2-2.3.7        | 124 KB    | ########## | 100% libidn2-2.3.7        | 124 KB    | ########## | 100% 
+zipp-3.17.0          | 24 KB     |            |   0% zipp-3.17.0          | 24 KB     | ########## | 100% zipp-3.17.0          | 24 KB     | ########## | 100% 
+libtiff-4.6.0        | 276 KB    |            |   0% libtiff-4.6.0        | 276 KB    | ########## | 100% libtiff-4.6.0        | 276 KB    | ########## | 100% 
+libstdcxx-ng-13.2.0  | 3.7 MB    |            |   0% libstdcxx-ng-13.2.0  | 3.7 MB    | ########## | 100% libstdcxx-ng-13.2.0  | 3.7 MB    | ########## | 100% 
+nettle-3.9.1         | 988 KB    |            |   0% nettle-3.9.1         | 988 KB    | ########## | 100% nettle-3.9.1         | 988 KB    | ########## | 100% 
+xorg-libice-1.1.1    | 57 KB     |            |   0% xorg-libice-1.1.1    | 57 KB     | ########## | 100% xorg-libice-1.1.1    | 57 KB     | ########## | 100% 
+font-ttf-inconsolata | 94 KB     |            |   0% font-ttf-inconsolata | 94 KB     | ########## | 100% 
+pixman-0.43.2        | 378 KB    |            |   0% pixman-0.43.2        | 378 KB    | ########## | 100% pixman-0.43.2        | 378 KB    | ########## | 100% 
+libopenvino-intel-gp | 8.1 MB    |            |   0% libopenvino-intel-gp | 8.1 MB    | ########## | 100% libopenvino-intel-gp | 8.1 MB    | ########## | 100% 
+font-ttf-ubuntu-0.83 | 1.5 MB    |            |   0% font-ttf-ubuntu-0.83 | 1.5 MB    | ########## | 100% font-ttf-ubuntu-0.83 | 1.5 MB    | ########## | 100% 
+scikit-learn-1.4.2   | 10.3 MB   |            |   0% scikit-learn-1.4.2   | 10.3 MB   | ########## | 100% scikit-learn-1.4.2   | 10.3 MB   | ########## | 100% 
+pytorch-cuda-11.8    | 3 KB      |            |   0% pytorch-cuda-11.8    | 3 KB      | ########## | 100% 
+xorg-renderproto-0.1 | 9 KB      |            |   0% xorg-renderproto-0.1 | 9 KB      | ########## | 100% 
+libnvjpeg-11.9.0.86  | 2.4 MB    |            |   0% libnvjpeg-11.9.0.86  | 2.4 MB    | ########## | 100% libnvjpeg-11.9.0.86  | 2.4 MB    | ########## | 100% 
+icu-73.2             | 11.5 MB   |            |   0% icu-73.2             | 11.5 MB   | ########## | 100% icu-73.2             | 11.5 MB   | ########## | 100% 
+freetype-2.12.1      | 620 KB    |            |   0% freetype-2.12.1      | 620 KB    | ########## | 100% freetype-2.12.1      | 620 KB    | ########## | 100% 
+xorg-libxext-1.3.4   | 49 KB     |            |   0% xorg-libxext-1.3.4   | 49 KB     | ########## | 100% xorg-libxext-1.3.4   | 49 KB     | ########## | 100% 
+harfbuzz-8.5.0       | 1.5 MB    |            |   0% harfbuzz-8.5.0       | 1.5 MB    | ########## | 100% harfbuzz-8.5.0       | 1.5 MB    | ########## | 100% 
+libprotobuf-4.25.3   | 2.7 MB    |            |   0% libprotobuf-4.25.3   | 2.7 MB    | ########## | 100% libprotobuf-4.25.3   | 2.7 MB    | ########## | 100% 
+tk-8.6.13            | 3.2 MB    |            |   0% tk-8.6.13            | 3.2 MB    | ########## | 100% tk-8.6.13            | 3.2 MB    | ########## | 100% 
+libopenvino-pytorch- | 1.1 MB    |            |   0% libopenvino-pytorch- | 1.1 MB    | ########## | 100% libopenvino-pytorch- | 1.1 MB    | ########## | 100% 
+libpng-1.6.43        | 281 KB    |            |   0% libpng-1.6.43        | 281 KB    | ########## | 100% libpng-1.6.43        | 281 KB    | ########## | 100% 
+xorg-fixesproto-5.0  | 9 KB      |            |   0% xorg-fixesproto-5.0  | 9 KB      | ########## | 100% 
+torchaudio-2.1.0     | 6.2 MB    |            |   0% torchaudio-2.1.0     | 6.2 MB    | ########## | 100% torchaudio-2.1.0     | 6.2 MB    | ########## | 100% 
+libtasn1-4.19.0      | 114 KB    |            |   0% libtasn1-4.19.0      | 114 KB    | ########## | 100% 
+cuda-nvrtc-11.8.89   | 19.1 MB   |            |   0% cuda-nvrtc-11.8.89   | 19.1 MB   | ####9      |  49% cuda-nvrtc-11.8.89   | 19.1 MB   | ########## | 100% cuda-nvrtc-11.8.89   | 19.1 MB   | ########## | 100% 
+llvm-openmp-15.0.7   | 3.1 MB    |            |   0% llvm-openmp-15.0.7   | 3.1 MB    | ########## | 100% llvm-openmp-15.0.7   | 3.1 MB    | ########## | 100% 
+cairo-1.18.0         | 959 KB    |            |   0% cairo-1.18.0         | 959 KB    | ########## | 100% cairo-1.18.0         | 959 KB    | ########## | 100% 
+cuda-version-12.5    | 16 KB     |            |   0% cuda-version-12.5    | 16 KB     | ########## | 100% 
+libvpx-1.14.0        | 996 KB    |            |   0% libvpx-1.14.0        | 996 KB    | ########## | 100% libvpx-1.14.0        | 996 KB    | ########## | 100% 
+joblib-1.4.0         | 538 KB    |            |   0% joblib-1.4.0         | 538 KB    | ########## | 100% joblib-1.4.0         | 538 KB    | ########## | 100% 
+libgfortran5-13.2.0  | 1.4 MB    |            |   0% libgfortran5-13.2.0  | 1.4 MB    | ########## | 100% libgfortran5-13.2.0  | 1.4 MB    | ########## | 100% 
+openjpeg-2.5.2       | 334 KB    |            |   0% openjpeg-2.5.2       | 334 KB    | ########## | 100% openjpeg-2.5.2       | 334 KB    | ########## | 100% 
+gmpy2-2.1.5          | 200 KB    |            |   0% gmpy2-2.1.5          | 200 KB    | ########## | 100% gmpy2-2.1.5          | 200 KB    | ########## | 100% 
+xz-5.2.6             | 409 KB    |            |   0% xz-5.2.6             | 409 KB    | ########## | 100% xz-5.2.6             | 409 KB    | ########## | 100% 
+libwebp-base-1.4.0   | 429 KB    |            |   0% libwebp-base-1.4.0   | 429 KB    | ########## | 100% libwebp-base-1.4.0   | 429 KB    | ########## | 100% 
+libopenvino-paddle-f | 683 KB    |            |   0% libopenvino-paddle-f | 683 KB    | ########## | 100% libopenvino-paddle-f | 683 KB    | ########## | 100% 
+cuda-cupti-11.8.87   | 25.3 MB   |            |   0% cuda-cupti-11.8.87   | 25.3 MB   | #######1   |  72% cuda-cupti-11.8.87   | 25.3 MB   | ########## | 100% 
+torchtriton-2.1.0    | 91.0 MB   |            |   0% torchtriton-2.1.0    | 91.0 MB   | #4         |  14% torchtriton-2.1.0    | 91.0 MB   | ####3      |  43% torchtriton-2.1.0    | 91.0 MB   | ######6    |  67% torchtriton-2.1.0    | 91.0 MB   | #########  |  91% torchtriton-2.1.0    | 91.0 MB   | ########## | 100% 
+libcblas-3.9.0       | 12 KB     |            |   0% libcblas-3.9.0       | 12 KB     | ########## | 100% 
+dav1d-1.2.1          | 742 KB    |            |   0% dav1d-1.2.1          | 742 KB    | ########## | 100% dav1d-1.2.1          | 742 KB    | ########## | 100% 
+setuptools-70.0.0    | 472 KB    |            |   0% setuptools-70.0.0    | 472 KB    | ########## | 100% setuptools-70.0.0    | 472 KB    | ########## | 100% 
+snappy-1.2.0         | 41 KB     |            |   0% snappy-1.2.0         | 41 KB     | ########## | 100% snappy-1.2.0         | 41 KB     | ########## | 100% 
+libass-0.17.1        | 124 KB    |            |   0% libass-0.17.1        | 124 KB    | ########## | 100% libass-0.17.1        | 124 KB    | ########## | 100% 
+xorg-xproto-7.0.31   | 73 KB     |            |   0% xorg-xproto-7.0.31   | 73 KB     | ########## | 100% 
+libopenvino-auto-plu | 224 KB    |            |   0% libopenvino-auto-plu | 224 KB    | ########## | 100% libopenvino-auto-plu | 224 KB    | ########## | 100% 
+jinja2-3.1.4         | 109 KB    |            |   0% jinja2-3.1.4         | 109 KB    | ########## | 100% jinja2-3.1.4         | 109 KB    | ########## | 100% 
+pytorch-2.1.0        | 1.46 GB   |            |   0% pytorch-2.1.0        | 1.46 GB   |            |   1% pytorch-2.1.0        | 1.46 GB   | 3          |   3% pytorch-2.1.0        | 1.46 GB   | 4          |   5% pytorch-2.1.0        | 1.46 GB   | 6          |   6% pytorch-2.1.0        | 1.46 GB   | 7          |   8% pytorch-2.1.0        | 1.46 GB   | 9          |   9% pytorch-2.1.0        | 1.46 GB   | #1         |  11% pytorch-2.1.0        | 1.46 GB   | #3         |  13% pytorch-2.1.0        | 1.46 GB   | #4         |  15% pytorch-2.1.0        | 1.46 GB   | #6         |  16% pytorch-2.1.0        | 1.46 GB   | #7         |  18% pytorch-2.1.0        | 1.46 GB   | #9         |  19% pytorch-2.1.0        | 1.46 GB   | ##         |  21% pytorch-2.1.0        | 1.46 GB   | ##2        |  22% pytorch-2.1.0        | 1.46 GB   | ##4        |  24% pytorch-2.1.0        | 1.46 GB   | ##6        |  26% pytorch-2.1.0        | 1.46 GB   | ##7        |  28% pytorch-2.1.0        | 1.46 GB   | ##9        |  29% pytorch-2.1.0        | 1.46 GB   | ###1       |  31% pytorch-2.1.0        | 1.46 GB   | ###2       |  33% pytorch-2.1.0        | 1.46 GB   | ###3       |  34% pytorch-2.1.0        | 1.46 GB   | ###5       |  36% pytorch-2.1.0        | 1.46 GB   | ###7       |  37% pytorch-2.1.0        | 1.46 GB   | ###8       |  39% pytorch-2.1.0        | 1.46 GB   | ###9       |  40% pytorch-2.1.0        | 1.46 GB   | ####1      |  42% pytorch-2.1.0        | 1.46 GB   | ####3      |  43% pytorch-2.1.0        | 1.46 GB   | ####4      |  45% pytorch-2.1.0        | 1.46 GB   | ####6      |  47% pytorch-2.1.0        | 1.46 GB   | ####8      |  48% pytorch-2.1.0        | 1.46 GB   | ####9      |  50% pytorch-2.1.0        | 1.46 GB   | #####1     |  52% pytorch-2.1.0        | 1.46 GB   | #####3     |  53% pytorch-2.1.0        | 1.46 GB   | #####4     |  55% pytorch-2.1.0        | 1.46 GB   | #####6     |  56% pytorch-2.1.0        | 1.46 GB   | #####8     |  58% pytorch-2.1.0        | 1.46 GB   | #####9     |  60% pytorch-2.1.0        | 1.46 GB   | ######1    |  61% pytorch-2.1.0        | 1.46 GB   | ######2    |  62% pytorch-2.1.0        | 1.46 GB   | ######4    |  64% pytorch-2.1.0        | 1.46 GB   | ######6    |  66% pytorch-2.1.0        | 1.46 GB   | ######7    |  68% pytorch-2.1.0        | 1.46 GB   | ######9    |  69% pytorch-2.1.0        | 1.46 GB   | #######    |  71% pytorch-2.1.0        | 1.46 GB   | #######2   |  73% pytorch-2.1.0        | 1.46 GB   | #######4   |  74% pytorch-2.1.0        | 1.46 GB   | #######5   |  76% pytorch-2.1.0        | 1.46 GB   | #######6   |  77% pytorch-2.1.0        | 1.46 GB   | #######8   |  79% pytorch-2.1.0        | 1.46 GB   | ########   |  81% pytorch-2.1.0        | 1.46 GB   | ########2  |  82% pytorch-2.1.0        | 1.46 GB   | ########4  |  84% pytorch-2.1.0        | 1.46 GB   | ########5  |  86% pytorch-2.1.0        | 1.46 GB   | ########7  |  87% pytorch-2.1.0        | 1.46 GB   | ########8  |  89% pytorch-2.1.0        | 1.46 GB   | ########9  |  90% pytorch-2.1.0        | 1.46 GB   | #########1 |  91% pytorch-2.1.0        | 1.46 GB   | #########2 |  92% pytorch-2.1.0        | 1.46 GB   | #########3 |  93% pytorch-2.1.0        | 1.46 GB   | #########4 |  95% pytorch-2.1.0        | 1.46 GB   | #########5 |  96% pytorch-2.1.0        | 1.46 GB   | #########6 |  97% pytorch-2.1.0        | 1.46 GB   | #########7 |  98% pytorch-2.1.0        | 1.46 GB   | #########8 |  99% pytorch-2.1.0        | 1.46 GB   | ########## | 100% pytorch-2.1.0        | 1.46 GB   | ########## | 100% 
+libzlib-1.3.1        | 60 KB     |            |   0% libzlib-1.3.1        | 60 KB     | ########## | 100% libzlib-1.3.1        | 60 KB     | ########## | 100% 
+huggingface_hub-0.23 | 384 KB    |            |   0% huggingface_hub-0.23 | 384 KB    | ########## | 100% huggingface_hub-0.23 | 384 KB    | ########## | 100% 
+mpfr-4.2.1           | 628 KB    |            |   0% mpfr-4.2.1           | 628 KB    | ########## | 100% mpfr-4.2.1           | 628 KB    | ########## | 100% 
+libgcc-ng-13.2.0     | 758 KB    |            |   0% libgcc-ng-13.2.0     | 758 KB    | ########## | 100% libgcc-ng-13.2.0     | 758 KB    | ########## | 100% 
+pysocks-1.7.1        | 19 KB     |            |   0% pysocks-1.7.1        | 19 KB     | ########## | 100% 
+libunistring-0.9.10  | 1.4 MB    |            |   0% libunistring-0.9.10  | 1.4 MB    | ########## | 100% libunistring-0.9.10  | 1.4 MB    | ########## | 100% 
+gmp-6.3.0            | 556 KB    |            |   0% gmp-6.3.0            | 556 KB    | ########## | 100% gmp-6.3.0            | 556 KB    | ########## | 100% 
+intel-openmp-2022.0. | 4.2 MB    |            |   0% intel-openmp-2022.0. | 4.2 MB    | ########## | 100% intel-openmp-2022.0. | 4.2 MB    | ########## | 100% 
+pcre2-10.43          | 929 KB    |            |   0% pcre2-10.43          | 929 KB    | ########## | 100% pcre2-10.43          | 929 KB    | ########## | 100% 
+libcusparse-11.7.5.8 | 176.3 MB  |            |   0% libcusparse-11.7.5.8 | 176.3 MB  | 5          |   5% libcusparse-11.7.5.8 | 176.3 MB  | #5         |  16% libcusparse-11.7.5.8 | 176.3 MB  | ##4        |  24% libcusparse-11.7.5.8 | 176.3 MB  | ###7       |  38% libcusparse-11.7.5.8 | 176.3 MB  | #####1     |  52% libcusparse-11.7.5.8 | 176.3 MB  | ######3    |  63% libcusparse-11.7.5.8 | 176.3 MB  | #######4   |  74% libcusparse-11.7.5.8 | 176.3 MB  | ########6  |  86% libcusparse-11.7.5.8 | 176.3 MB  | ########## | 100% libcusparse-11.7.5.8 | 176.3 MB  | ########## | 100% 
+libopenvino-tensorfl | 476 KB    |            |   0% libopenvino-tensorfl | 476 KB    | ########## | 100% libopenvino-tensorfl | 476 KB    | ########## | 100% 
+_openmp_mutex-4.5    | 23 KB     |            |   0% _openmp_mutex-4.5    | 23 KB     | ########## | 100% 
+openh264-2.4.1       | 718 KB    |            |   0% openh264-2.4.1       | 718 KB    | ########## | 100% openh264-2.4.1       | 718 KB    | ########## | 100% 
+xorg-libx11-1.8.9    | 809 KB    |            |   0% xorg-libx11-1.8.9    | 809 KB    | ########## | 100% xorg-libx11-1.8.9    | 809 KB    | ########## | 100% 
+libdeflate-1.20      | 70 KB     |            |   0% libdeflate-1.20      | 70 KB     | ########## | 100% libdeflate-1.20      | 70 KB     | ########## | 100% 
+cuda-libraries-11.8. | 1 KB      |            |   0% cuda-libraries-11.8. | 1 KB      | ########## | 100% 
+mpc-1.3.1            | 114 KB    |            |   0% mpc-1.3.1            | 114 KB    | ########## | 100% mpc-1.3.1            | 114 KB    | ########## | 100% 
+p11-kit-0.24.1       | 4.5 MB    |            |   0% p11-kit-0.24.1       | 4.5 MB    | ########## | 100% p11-kit-0.24.1       | 4.5 MB    | ########## | 100% 
+tbb-2021.12.0        | 190 KB    |            |   0% tbb-2021.12.0        | 190 KB    | ########## | 100% tbb-2021.12.0        | 190 KB    | ########## | 100% 
+libopenvino-onnx-fro | 1.5 MB    |            |   0% libopenvino-onnx-fro | 1.5 MB    | ########## | 100% libopenvino-onnx-fro | 1.5 MB    | ########## | 100% 
+gettext-tools-0.22.5 | 2.6 MB    |            |   0% gettext-tools-0.22.5 | 2.6 MB    | ########## | 100% gettext-tools-0.22.5 | 2.6 MB    | ########## | 100% 
+libgomp-13.2.0       | 412 KB    |            |   0% libgomp-13.2.0       | 412 KB    | ########## | 100% libgomp-13.2.0       | 412 KB    | ########## | 100% 
+filelock-3.14.0      | 16 KB     |            |   0% filelock-3.14.0      | 16 KB     | ########## | 100% filelock-3.14.0      | 16 KB     | ########## | 100% 
+openssl-3.3.1        | 2.8 MB    |            |   0% openssl-3.3.1        | 2.8 MB    | ########## | 100% openssl-3.3.1        | 2.8 MB    | ########## | 100% 
+libblas-3.9.0        | 13 KB     |            |   0% libblas-3.9.0        | 13 KB     | ########## | 100% 
+x264-1!164.3095      | 877 KB    |            |   0% x264-1!164.3095      | 877 KB    | ########## | 100% x264-1!164.3095      | 877 KB    | ########## | 100% 
+tzdata-2024a         | 117 KB    |            |   0% tzdata-2024a         | 117 KB    | ########## | 100% tzdata-2024a         | 117 KB    | ########## | 100% 
+ld_impl_linux-64-2.4 | 692 KB    |            |   0% ld_impl_linux-64-2.4 | 692 KB    | ########## | 100% ld_impl_linux-64-2.4 | 692 KB    | ########## | 100% 
+idna-3.7             | 51 KB     |            |   0% idna-3.7             | 51 KB     | ########## | 100% idna-3.7             | 51 KB     | ########## | 100% 
+libcufft-10.9.0.58   | 142.8 MB  |            |   0% libcufft-10.9.0.58   | 142.8 MB  | 5          |   6% libcufft-10.9.0.58   | 142.8 MB  | ##2        |  22% libcufft-10.9.0.58   | 142.8 MB  | ###4       |  34% libcufft-10.9.0.58   | 142.8 MB  | ####4      |  45% libcufft-10.9.0.58   | 142.8 MB  | #####7     |  58% libcufft-10.9.0.58   | 142.8 MB  | ######8    |  68% libcufft-10.9.0.58   | 142.8 MB  | ########3  |  83% libcufft-10.9.0.58   | 142.8 MB  | #########7 |  97% libcufft-10.9.0.58   | 142.8 MB  | ########## | 100% 
+ca-certificates-2024 | 152 KB    |            |   0% ca-certificates-2024 | 152 KB    | ########## | 100% ca-certificates-2024 | 152 KB    | ########## | 100% 
+ncurses-6.5          | 867 KB    |            |   0% ncurses-6.5          | 867 KB    | ########## | 100% ncurses-6.5          | 867 KB    | ########## | 100% 
+font-ttf-dejavu-sans | 388 KB    |            |   0% font-ttf-dejavu-sans | 388 KB    | ########## | 100% font-ttf-dejavu-sans | 388 KB    | ########## | 100% 
+liblapack-3.9.0      | 12 KB     |            |   0% liblapack-3.9.0      | 12 KB     | ########## | 100% 
+libhwloc-2.10.0      | 2.3 MB    |            |   0% libhwloc-2.10.0      | 2.3 MB    | ########## | 100% libhwloc-2.10.0      | 2.3 MB    | ########## | 100% 
+_libgcc_mutex-0.1    | 3 KB      |            |   0% _libgcc_mutex-0.1    | 3 KB      | ########## | 100% 
+libcurand-10.3.6.39  | 51.8 MB   |            |   0% libcurand-10.3.6.39  | 51.8 MB   | ###        |  31% libcurand-10.3.6.39  | 51.8 MB   | ######7    |  67% libcurand-10.3.6.39  | 51.8 MB   | ########## | 100% 
+python-3.11.5        | 29.4 MB   |            |   0% python-3.11.5        | 29.4 MB   | ####5      |  46% python-3.11.5        | 29.4 MB   | #########1 |  91% python-3.11.5        | 29.4 MB   | ########## | 100% 
+xorg-libxau-1.0.11   | 14 KB     |            |   0% xorg-libxau-1.0.11   | 14 KB     | ########## | 100% xorg-libxau-1.0.11   | 14 KB     | ########## | 100% 
+transformers-4.37.2  | 10.0 MB   |            |   0% transformers-4.37.2  | 10.0 MB   | ########## | 100% transformers-4.37.2  | 10.0 MB   | ########## | 100% 
+gettext-0.22.5       | 464 KB    |            |   0% gettext-0.22.5       | 464 KB    | ########## | 100% gettext-0.22.5       | 464 KB    | ########## | 100% 
+libjpeg-turbo-3.0.0  | 604 KB    |            |   0% libjpeg-turbo-3.0.0  | 604 KB    | ########## | 100% libjpeg-turbo-3.0.0  | 604 KB    | ########## | 100% 
+libgettextpo-devel-0 | 36 KB     |            |   0% libgettextpo-devel-0 | 36 KB     | ########## | 100% libgettextpo-devel-0 | 36 KB     | ########## | 100% 
+fontconfig-2.14.2    | 266 KB    |            |   0% fontconfig-2.14.2    | 266 KB    | ########## | 100% fontconfig-2.14.2    | 266 KB    | ########## | 100% 
+typing-extensions-4. | 10 KB     |            |   0% typing-extensions-4. | 10 KB     | ########## | 100% typing-extensions-4. | 10 KB     | ########## | 100% 
+numpy-1.26.4         | 7.7 MB    |            |   0% numpy-1.26.4         | 7.7 MB    | ########## | 100% numpy-1.26.4         | 7.7 MB    | ########## | 100% 
+regex-2023.10.3      | 427 KB    |            |   0% regex-2023.10.3      | 427 KB    | ########## | 100% regex-2023.10.3      | 427 KB    | ########## | 100% 
+torchvision-0.16.0   | 8.5 MB    |            |   0% torchvision-0.16.0   | 8.5 MB    | ########## | 100% torchvision-0.16.0   | 8.5 MB    | ########## | 100% 
+libopenvino-2024.1.0 | 4.9 MB    |            |   0% libopenvino-2024.1.0 | 4.9 MB    | ########## | 100% libopenvino-2024.1.0 | 4.9 MB    | ########## | 100% 
+libasprintf-devel-0. | 33 KB     |            |   0% libasprintf-devel-0. | 33 KB     | ########## | 100% libasprintf-devel-0. | 33 KB     | ########## | 100% 
+packaging-24.0       | 49 KB     |            |   0% packaging-24.0       | 49 KB     | ########## | 100% packaging-24.0       | 49 KB     | ########## | 100% 
+importlib-metadata-7 | 49 KB     |            |   0% importlib-metadata-7 | 49 KB     | ########## | 100% importlib-metadata-7 | 49 KB     | ########## | 100% 
+libopenvino-ir-front | 196 KB    |            |   0% libopenvino-ir-front | 196 KB    | ########## | 100% libopenvino-ir-front | 196 KB    | ########## | 100% 
+graphite2-1.3.13     | 95 KB     |            |   0% graphite2-1.3.13     | 95 KB     | ########## | 100% graphite2-1.3.13     | 95 KB     | ########## | 100% 
+libva-2.21.0         | 185 KB    |            |   0% libva-2.21.0         | 185 KB    | ########## | 100% libva-2.21.0         | 185 KB    | ########## | 100% 
+sympy-1.12           | 4.1 MB    |            |   0% sympy-1.12           | 4.1 MB    | ########## | 100% sympy-1.12           | 4.1 MB    | ########## | 100% 
+libgettextpo-0.22.5  | 167 KB    |            |   0% libgettextpo-0.22.5  | 167 KB    | ########## | 100% libgettextpo-0.22.5  | 167 KB    | ########## | 100% 
+libsqlite-3.45.3     | 840 KB    |            |   0% libsqlite-3.45.3     | 840 KB    | ########## | 100% libsqlite-3.45.3     | 840 KB    | ########## | 100% 
+xorg-xextproto-7.3.0 | 30 KB     |            |   0% xorg-xextproto-7.3.0 | 30 KB     | ########## | 100% xorg-xextproto-7.3.0 | 30 KB     | ########## | 100% 
+safetensors-0.4.2    | 1.1 MB    |            |   0% safetensors-0.4.2    | 1.1 MB    | ########## | 100% safetensors-0.4.2    | 1.1 MB    | ########## | 100% 
+libopenvino-intel-np | 318 KB    |            |   0% libopenvino-intel-np | 318 KB    | ########## | 100% libopenvino-intel-np | 318 KB    | ########## | 100% 
+brotli-python-1.1.0  | 343 KB    |            |   0% brotli-python-1.1.0  | 343 KB    | ########## | 100% brotli-python-1.1.0  | 343 KB    | ########## | 100% 
+xorg-libxrender-0.9. | 37 KB     |            |   0% xorg-libxrender-0.9. | 37 KB     | ########## | 100% xorg-libxrender-0.9. | 37 KB     | ########## | 100% 
+libdrm-2.4.120       | 296 KB    |            |   0% libdrm-2.4.120       | 296 KB    | ########## | 100% libdrm-2.4.120       | 296 KB    | ########## | 100% 
+font-ttf-source-code | 684 KB    |            |   0% font-ttf-source-code | 684 KB    | ########## | 100% font-ttf-source-code | 684 KB    | ########## | 100% 
+libopenvino-hetero-p | 187 KB    |            |   0% libopenvino-hetero-p | 187 KB    | ########## | 100% libopenvino-hetero-p | 187 KB    | ########## | 100% 
+libuuid-2.38.1       | 33 KB     |            |   0% libuuid-2.38.1       | 33 KB     | ########## | 100% libuuid-2.38.1       | 33 KB     | ########## | 100% 
+lame-3.100           | 496 KB    |            |   0% lame-3.100           | 496 KB    | ########## | 100% lame-3.100           | 496 KB    | ########## | 100% 
+libpciaccess-0.18    | 28 KB     |            |   0% libpciaccess-0.18    | 28 KB     | ########## | 100% libpciaccess-0.18    | 28 KB     | ########## | 100% 
+cuda-nvtx-11.8.86    | 57 KB     |            |   0% cuda-nvtx-11.8.86    | 57 KB     | ########## | 100% 
+cuda-cudart-11.8.89  | 197 KB    |            |   0% cuda-cudart-11.8.89  | 197 KB    | ########## | 100% 
+requests-2.32.3      | 57 KB     |            |   0% requests-2.32.3      | 57 KB     | ########## | 100% requests-2.32.3      | 57 KB     | ########## | 100% 
+readline-8.2         | 275 KB    |            |   0% readline-8.2         | 275 KB    | ########## | 100% readline-8.2         | 275 KB    | ########## | 100% 
+x265-3.5             | 3.2 MB    |            |   0% x265-3.5             | 3.2 MB    | ########## | 100% x265-3.5             | 3.2 MB    | ########## | 100% 
+certifi-2024.6.2     | 161 KB    |            |   0% certifi-2024.6.2     | 161 KB    | ########## | 100% certifi-2024.6.2     | 161 KB    | ########## | 100% 
+libcufile-1.10.0.4   | 1.0 MB    |            |   0% libcufile-1.10.0.4   | 1.0 MB    | ########## | 100% libcufile-1.10.0.4   | 1.0 MB    | ########## | 100% 
+libasprintf-0.22.5   | 42 KB     |            |   0% libasprintf-0.22.5   | 42 KB     | ########## | 100% libasprintf-0.22.5   | 42 KB     | ########## | 100% 
+svt-av1-2.1.0        | 2.5 MB    |            |   0% svt-av1-2.1.0        | 2.5 MB    | ########## | 100% svt-av1-2.1.0        | 2.5 MB    | ########## | 100% 
+tqdm-4.66.4          | 163 KB    |            |   0% tqdm-4.66.4          | 163 KB    | ########## | 100% tqdm-4.66.4          | 163 KB    | ########## | 100% 
+pthread-stubs-0.4    | 5 KB      |            |   0% pthread-stubs-0.4    | 5 KB      | ########## | 100% 
+expat-2.6.2          | 134 KB    |            |   0% expat-2.6.2          | 134 KB    | ########## | 100% expat-2.6.2          | 134 KB    | ########## | 100% 
+fonts-conda-ecosyste | 4 KB      |            |   0% fonts-conda-ecosyste | 4 KB      | ########## | 100% 
+lerc-4.0.0           | 275 KB    |            |   0% lerc-4.0.0           | 275 KB    | ########## | 100% 
+markupsafe-2.1.5     | 27 KB     |            |   0% markupsafe-2.1.5     | 27 KB     | ########## | 100% markupsafe-2.1.5     | 27 KB     | ########## | 100% 
+xorg-libxdmcp-1.1.3  | 19 KB     |            |   0% xorg-libxdmcp-1.1.3  | 19 KB     | ########## | 100% 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Installing pip dependencies: ...working... Ran pip subprocess with arguments:
+['/home/scur1608/.conda/envs/recsys/bin/python', '-m', 'pip', 'install', '-U', '-r', '/home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt']
+Pip subprocess output:
+Collecting absl-py==2.1.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 1))
+  Downloading absl_py-2.1.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting aiohttp==3.9.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 2))
+  Downloading aiohttp-3.9.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.5 kB)
+Collecting aiosignal==1.3.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 3))
+  Downloading aiosignal-1.3.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting anyio==4.4.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 4))
+  Downloading anyio-4.4.0-py3-none-any.whl.metadata (4.6 kB)
+Collecting argon2-cffi==23.1.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 5))
+  Downloading argon2_cffi-23.1.0-py3-none-any.whl.metadata (5.2 kB)
+Collecting argon2-cffi-bindings==21.2.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 6))
+  Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Collecting arrow==1.3.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 7))
+  Downloading arrow-1.3.0-py3-none-any.whl.metadata (7.5 kB)
+Collecting asttokens==2.4.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 8))
+  Downloading asttokens-2.4.1-py2.py3-none-any.whl.metadata (5.2 kB)
+Collecting async-lru==2.0.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 9))
+  Downloading async_lru-2.0.4-py3-none-any.whl.metadata (4.5 kB)
+Collecting attrs==23.2.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 10))
+  Downloading attrs-23.2.0-py3-none-any.whl.metadata (9.5 kB)
+Collecting babel==2.15.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 11))
+  Downloading Babel-2.15.0-py3-none-any.whl.metadata (1.5 kB)
+Collecting beautifulsoup4==4.12.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 12))
+  Downloading beautifulsoup4-4.12.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting bleach==6.1.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 13))
+  Downloading bleach-6.1.0-py3-none-any.whl.metadata (30 kB)
+Collecting cachetools==5.3.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 14))
+  Downloading cachetools-5.3.3-py3-none-any.whl.metadata (5.3 kB)
+Collecting cffi==1.16.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 15))
+  Downloading cffi-1.16.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting comm==0.2.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 16))
+  Downloading comm-0.2.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting contourpy==1.2.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 17))
+  Downloading contourpy-1.2.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.8 kB)
+Collecting cycler==0.12.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 18))
+  Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting debugpy==1.8.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 19))
+  Downloading debugpy-1.8.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.1 kB)
+Collecting decorator==5.1.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 20))
+  Downloading decorator-5.1.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting defusedxml==0.7.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 21))
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting executing==2.0.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 22))
+  Downloading executing-2.0.1-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting fastjsonschema==2.19.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 23))
+  Downloading fastjsonschema-2.19.1-py3-none-any.whl.metadata (2.1 kB)
+Collecting fonttools==4.53.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 24))
+  Downloading fonttools-4.53.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (162 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.2/162.2 kB 34.2 MB/s eta 0:00:00
+Collecting fqdn==1.5.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 25))
+  Downloading fqdn-1.5.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting frozenlist==1.4.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 26))
+  Downloading frozenlist-1.4.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting fsspec==2024.6.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 27))
+  Downloading fsspec-2024.6.0-py3-none-any.whl.metadata (11 kB)
+Collecting google-auth==2.29.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 28))
+  Downloading google_auth-2.29.0-py2.py3-none-any.whl.metadata (4.7 kB)
+Collecting google-auth-oauthlib==1.0.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 29))
+  Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting grpcio==1.64.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 30))
+  Downloading grpcio-1.64.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.3 kB)
+Collecting h11==0.14.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 31))
+  Downloading h11-0.14.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting httpcore==1.0.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 32))
+  Downloading httpcore-1.0.5-py3-none-any.whl.metadata (20 kB)
+Collecting httpx==0.27.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 33))
+  Downloading httpx-0.27.0-py3-none-any.whl.metadata (7.2 kB)
+Collecting ipykernel==6.29.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 34))
+  Downloading ipykernel-6.29.4-py3-none-any.whl.metadata (6.3 kB)
+Collecting ipython==8.25.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 35))
+  Downloading ipython-8.25.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting ipywidgets==8.1.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 36))
+  Downloading ipywidgets-8.1.3-py3-none-any.whl.metadata (2.4 kB)
+Collecting isoduration==20.11.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 37))
+  Downloading isoduration-20.11.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting jedi==0.19.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 38))
+  Downloading jedi-0.19.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting json5==0.9.25 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 39))
+  Downloading json5-0.9.25-py3-none-any.whl.metadata (30 kB)
+Collecting jsonpointer==2.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 40))
+  Downloading jsonpointer-2.4-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting jsonschema==4.22.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 41))
+  Downloading jsonschema-4.22.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting jsonschema-specifications==2023.12.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 42))
+  Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl.metadata (3.0 kB)
+Collecting jupyter-client==8.6.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 43))
+  Downloading jupyter_client-8.6.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting jupyter-core==5.7.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 44))
+  Downloading jupyter_core-5.7.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting jupyter-events==0.10.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 45))
+  Downloading jupyter_events-0.10.0-py3-none-any.whl.metadata (5.9 kB)
+Collecting jupyter-lsp==2.2.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 46))
+  Downloading jupyter_lsp-2.2.5-py3-none-any.whl.metadata (1.8 kB)
+Collecting jupyter-server==2.14.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 47))
+  Downloading jupyter_server-2.14.1-py3-none-any.whl.metadata (8.4 kB)
+Collecting jupyter-server-terminals==0.5.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 48))
+  Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl.metadata (5.6 kB)
+Collecting jupyterlab==4.2.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 49))
+  Downloading jupyterlab-4.2.1-py3-none-any.whl.metadata (16 kB)
+Collecting jupyterlab-pygments==0.3.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 50))
+  Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting jupyterlab-server==2.27.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 51))
+  Downloading jupyterlab_server-2.27.2-py3-none-any.whl.metadata (5.9 kB)
+Collecting jupyterlab-widgets==3.0.11 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 52))
+  Downloading jupyterlab_widgets-3.0.11-py3-none-any.whl.metadata (4.1 kB)
+Collecting kiwisolver==1.4.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 53))
+  Downloading kiwisolver-1.4.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.4 kB)
+Collecting lightning-utilities==0.11.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 54))
+  Downloading lightning_utilities-0.11.2-py3-none-any.whl.metadata (4.7 kB)
+Collecting markdown==3.6 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 55))
+  Downloading Markdown-3.6-py3-none-any.whl.metadata (7.0 kB)
+Collecting matplotlib==3.9.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 56))
+  Downloading matplotlib-3.9.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+Collecting matplotlib-inline==0.1.7 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 57))
+  Downloading matplotlib_inline-0.1.7-py3-none-any.whl.metadata (3.9 kB)
+Collecting mistune==3.0.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 58))
+  Downloading mistune-3.0.2-py3-none-any.whl.metadata (1.7 kB)
+Collecting multidict==6.0.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 59))
+  Downloading multidict-6.0.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting nbclient==0.10.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 60))
+  Downloading nbclient-0.10.0-py3-none-any.whl.metadata (7.8 kB)
+Collecting nbconvert==7.16.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 61))
+  Downloading nbconvert-7.16.4-py3-none-any.whl.metadata (8.5 kB)
+Collecting nbformat==5.10.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 62))
+  Downloading nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)
+Collecting nest-asyncio==1.6.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 63))
+  Downloading nest_asyncio-1.6.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting notebook==7.2.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 64))
+  Downloading notebook-7.2.0-py3-none-any.whl.metadata (10 kB)
+Collecting notebook-shim==0.2.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 65))
+  Downloading notebook_shim-0.2.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting oauthlib==3.2.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 66))
+  Downloading oauthlib-3.2.2-py3-none-any.whl.metadata (7.5 kB)
+Collecting overrides==7.7.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 67))
+  Downloading overrides-7.7.0-py3-none-any.whl.metadata (5.8 kB)
+Requirement already satisfied: packaging==24.0 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 68)) (24.0)
+Collecting pandas==2.2.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 69))
+  Downloading pandas-2.2.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (19 kB)
+Collecting pandocfilters==1.5.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 70))
+  Downloading pandocfilters-1.5.1-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting parso==0.8.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 71))
+  Downloading parso-0.8.4-py2.py3-none-any.whl.metadata (7.7 kB)
+Collecting pexpect==4.9.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 72))
+  Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting platformdirs==4.2.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 73))
+  Downloading platformdirs-4.2.2-py3-none-any.whl.metadata (11 kB)
+Collecting prometheus-client==0.20.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 74))
+  Downloading prometheus_client-0.20.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting prompt-toolkit==3.0.46 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 75))
+  Downloading prompt_toolkit-3.0.46-py3-none-any.whl.metadata (6.4 kB)
+Collecting protobuf==5.27.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 76))
+  Downloading protobuf-5.27.0-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+Collecting psutil==5.9.8 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 77))
+  Downloading psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (21 kB)
+Collecting ptyprocess==0.7.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 78))
+  Downloading ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting pure-eval==0.2.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 79))
+  Downloading pure_eval-0.2.2-py3-none-any.whl.metadata (6.2 kB)
+Collecting pyasn1==0.6.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 80))
+  Downloading pyasn1-0.6.0-py2.py3-none-any.whl.metadata (8.3 kB)
+Collecting pyasn1-modules==0.4.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 81))
+  Downloading pyasn1_modules-0.4.0-py3-none-any.whl.metadata (3.4 kB)
+Collecting pycparser==2.22 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 82))
+  Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Collecting pygments==2.18.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 83))
+  Downloading pygments-2.18.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pyparsing==3.1.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 84))
+  Downloading pyparsing-3.1.2-py3-none-any.whl.metadata (5.1 kB)
+Collecting python-dateutil==2.9.0.post0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 85))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting python-json-logger==2.0.7 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 86))
+  Downloading python_json_logger-2.0.7-py3-none-any.whl.metadata (6.5 kB)
+Collecting pytorch-lightning==2.1.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87))
+  Downloading pytorch_lightning-2.1.0-py3-none-any.whl.metadata (23 kB)
+Collecting pytz==2024.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 88))
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting pyzmq==26.0.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 89))
+  Downloading pyzmq-26.0.3-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting referencing==0.35.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 90))
+  Downloading referencing-0.35.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting requests-oauthlib==2.0.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 91))
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting rfc3339-validator==0.1.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 92))
+  Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting rfc3986-validator==0.1.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 93))
+  Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting rpds-py==0.18.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 94))
+  Downloading rpds_py-0.18.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting rsa==4.9 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 95))
+  Downloading rsa-4.9-py3-none-any.whl.metadata (4.2 kB)
+Collecting seaborn==0.13.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 96))
+  Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting send2trash==1.8.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 97))
+  Downloading Send2Trash-1.8.3-py3-none-any.whl.metadata (4.0 kB)
+Collecting six==1.16.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 98))
+  Downloading six-1.16.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting sniffio==1.3.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 99))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting soupsieve==2.5 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 100))
+  Downloading soupsieve-2.5-py3-none-any.whl.metadata (4.7 kB)
+Collecting stack-data==0.6.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 101))
+  Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+Collecting tabulate==0.9.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 102))
+  Downloading tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Collecting tensorboard==2.14.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 103))
+  Downloading tensorboard-2.14.1-py3-none-any.whl.metadata (1.7 kB)
+Collecting tensorboard-data-server==0.7.2 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 104))
+  Downloading tensorboard_data_server-0.7.2-py3-none-any.whl.metadata (1.1 kB)
+Collecting terminado==0.18.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 105))
+  Downloading terminado-0.18.1-py3-none-any.whl.metadata (5.8 kB)
+Collecting tinycss2==1.3.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 106))
+  Downloading tinycss2-1.3.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting torchmetrics==1.4.0.post0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 107))
+  Downloading torchmetrics-1.4.0.post0-py3-none-any.whl.metadata (19 kB)
+Collecting tornado==6.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 108))
+  Downloading tornado-6.4-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.5 kB)
+Collecting traitlets==5.14.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 109))
+  Downloading traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+Collecting transformers==4.27.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 110))
+  Downloading transformers-4.27.0-py3-none-any.whl.metadata (106 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.7/106.7 kB 20.8 MB/s eta 0:00:00
+Collecting types-python-dateutil==2.9.0.20240316 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 111))
+  Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl.metadata (1.8 kB)
+Collecting tzdata==2024.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 112))
+  Downloading tzdata-2024.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting uri-template==1.3.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 113))
+  Downloading uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting wcwidth==0.2.13 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 114))
+  Downloading wcwidth-0.2.13-py2.py3-none-any.whl.metadata (14 kB)
+Collecting webcolors==24.6.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 115))
+  Downloading webcolors-24.6.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting webencodings==0.5.1 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 116))
+  Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+Collecting websocket-client==1.8.0 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 117))
+  Downloading websocket_client-1.8.0-py3-none-any.whl.metadata (8.0 kB)
+Collecting werkzeug==3.0.3 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 118))
+  Downloading werkzeug-3.0.3-py3-none-any.whl.metadata (3.7 kB)
+Collecting widgetsnbextension==4.0.11 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 119))
+  Downloading widgetsnbextension-4.0.11-py3-none-any.whl.metadata (1.6 kB)
+Collecting yarl==1.9.4 (from -r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 120))
+  Downloading yarl-1.9.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (31 kB)
+Requirement already satisfied: idna>=2.8 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from anyio==4.4.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 4)) (3.7)
+Requirement already satisfied: numpy>=1.20 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from contourpy==1.2.1->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 17)) (1.26.4)
+Requirement already satisfied: certifi in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from httpcore==1.0.5->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 32)) (2024.6.2)
+Requirement already satisfied: typing-extensions>=4.6 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from ipython==8.25.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 35)) (4.12.1)
+Requirement already satisfied: pyyaml>=5.3 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from jupyter-events==0.10.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 45)) (6.0.1)
+Requirement already satisfied: jinja2>=3.0.3 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from jupyter-server==2.14.1->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 47)) (3.1.4)
+Requirement already satisfied: requests>=2.31 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from jupyterlab-server==2.27.2->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 51)) (2.32.3)
+Requirement already satisfied: setuptools in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from lightning-utilities==0.11.2->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 54)) (70.0.0)
+Requirement already satisfied: pillow>=8 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from matplotlib==3.9.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 56)) (10.3.0)
+Requirement already satisfied: markupsafe>=2.0 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from nbconvert==7.16.4->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 61)) (2.1.5)
+Requirement already satisfied: torch>=1.12.0 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from pytorch-lightning==2.1.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87)) (2.1.0)
+Requirement already satisfied: tqdm>=4.57.0 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from pytorch-lightning==2.1.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87)) (4.66.4)
+Requirement already satisfied: filelock in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from transformers==4.27.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 110)) (3.14.0)
+Requirement already satisfied: huggingface-hub<1.0,>=0.11.0 in /gpfs/home3/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/huggingface_hub-0.23.3-py3.8.egg (from transformers==4.27.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 110)) (0.23.3)
+Requirement already satisfied: regex!=2019.12.17 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from transformers==4.27.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 110)) (2023.10.3)
+Collecting tokenizers!=0.11.3,<0.14,>=0.11.1 (from transformers==4.27.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 110))
+  Downloading tokenizers-0.13.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from requests>=2.31->jupyterlab-server==2.27.2->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 51)) (3.3.2)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from requests>=2.31->jupyterlab-server==2.27.2->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 51)) (2.2.1)
+Requirement already satisfied: sympy in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from torch>=1.12.0->pytorch-lightning==2.1.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87)) (1.12)
+Requirement already satisfied: networkx in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from torch>=1.12.0->pytorch-lightning==2.1.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87)) (3.3)
+Requirement already satisfied: mpmath>=0.19 in /home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages (from sympy->torch>=1.12.0->pytorch-lightning==2.1.0->-r /home/scur1608/Prompt4NR/condaenv.q067kzr0.requirements.txt (line 87)) (1.3.0)
+Downloading absl_py-2.1.0-py3-none-any.whl (133 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.7/133.7 kB 26.7 MB/s eta 0:00:00
+Downloading aiohttp-3.9.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 65.1 MB/s eta 0:00:00
+Downloading aiosignal-1.3.1-py3-none-any.whl (7.6 kB)
+Downloading anyio-4.4.0-py3-none-any.whl (86 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.8/86.8 kB 20.5 MB/s eta 0:00:00
+Downloading argon2_cffi-23.1.0-py3-none-any.whl (15 kB)
+Downloading argon2_cffi_bindings-21.2.0-cp36-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (86 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.2/86.2 kB 20.2 MB/s eta 0:00:00
+Downloading arrow-1.3.0-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 16.8 MB/s eta 0:00:00
+Downloading asttokens-2.4.1-py2.py3-none-any.whl (27 kB)
+Downloading async_lru-2.0.4-py3-none-any.whl (6.1 kB)
+Downloading attrs-23.2.0-py3-none-any.whl (60 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.8/60.8 kB 13.0 MB/s eta 0:00:00
+Downloading Babel-2.15.0-py3-none-any.whl (9.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.6/9.6 MB 184.8 MB/s eta 0:00:00
+Downloading beautifulsoup4-4.12.3-py3-none-any.whl (147 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.9/147.9 kB 30.7 MB/s eta 0:00:00
+Downloading bleach-6.1.0-py3-none-any.whl (162 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 162.8/162.8 kB 36.9 MB/s eta 0:00:00
+Downloading cachetools-5.3.3-py3-none-any.whl (9.3 kB)
+Downloading cffi-1.16.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (464 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 464.8/464.8 kB 59.8 MB/s eta 0:00:00
+Downloading comm-0.2.2-py3-none-any.whl (7.2 kB)
+Downloading contourpy-1.2.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (306 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 306.0/306.0 kB 49.8 MB/s eta 0:00:00
+Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Downloading debugpy-1.8.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 MB 137.7 MB/s eta 0:00:00
+Downloading decorator-5.1.1-py3-none-any.whl (9.1 kB)
+Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Downloading executing-2.0.1-py2.py3-none-any.whl (24 kB)
+Downloading fastjsonschema-2.19.1-py3-none-any.whl (23 kB)
+Downloading fonttools-4.53.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.9/4.9 MB 170.0 MB/s eta 0:00:00
+Downloading fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+Downloading frozenlist-1.4.1-cp311-cp311-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (272 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 272.3/272.3 kB 44.7 MB/s eta 0:00:00
+Downloading fsspec-2024.6.0-py3-none-any.whl (176 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 176.9/176.9 kB 35.7 MB/s eta 0:00:00
+Downloading google_auth-2.29.0-py2.py3-none-any.whl (189 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 189.2/189.2 kB 29.8 MB/s eta 0:00:00
+Downloading google_auth_oauthlib-1.0.0-py2.py3-none-any.whl (18 kB)
+Downloading grpcio-1.64.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (5.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 191.9 MB/s eta 0:00:00
+Downloading h11-0.14.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 kB 9.0 MB/s eta 0:00:00
+Downloading httpcore-1.0.5-py3-none-any.whl (77 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 77.9/77.9 kB 14.1 MB/s eta 0:00:00
+Downloading httpx-0.27.0-py3-none-any.whl (75 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 75.6/75.6 kB 14.4 MB/s eta 0:00:00
+Downloading ipykernel-6.29.4-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.1/117.1 kB 21.5 MB/s eta 0:00:00
+Downloading ipython-8.25.0-py3-none-any.whl (817 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 817.3/817.3 kB 85.4 MB/s eta 0:00:00
+Downloading ipywidgets-8.1.3-py3-none-any.whl (139 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 139.4/139.4 kB 27.4 MB/s eta 0:00:00
+Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+Downloading jedi-0.19.1-py2.py3-none-any.whl (1.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 121.4 MB/s eta 0:00:00
+Downloading json5-0.9.25-py3-none-any.whl (30 kB)
+Downloading jsonpointer-2.4-py2.py3-none-any.whl (7.8 kB)
+Downloading jsonschema-4.22.0-py3-none-any.whl (88 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 88.3/88.3 kB 18.0 MB/s eta 0:00:00
+Downloading jsonschema_specifications-2023.12.1-py3-none-any.whl (18 kB)
+Downloading jupyter_client-8.6.2-py3-none-any.whl (105 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 105.9/105.9 kB 20.3 MB/s eta 0:00:00
+Downloading jupyter_core-5.7.2-py3-none-any.whl (28 kB)
+Downloading jupyter_events-0.10.0-py3-none-any.whl (18 kB)
+Downloading jupyter_lsp-2.2.5-py3-none-any.whl (69 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.1/69.1 kB 11.3 MB/s eta 0:00:00
+Downloading jupyter_server-2.14.1-py3-none-any.whl (383 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 383.4/383.4 kB 55.0 MB/s eta 0:00:00
+Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl (13 kB)
+Downloading jupyterlab-4.2.1-py3-none-any.whl (11.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.6/11.6 MB 194.3 MB/s eta 0:00:00
+Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl (15 kB)
+Downloading jupyterlab_server-2.27.2-py3-none-any.whl (59 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.4/59.4 kB 14.0 MB/s eta 0:00:00
+Downloading jupyterlab_widgets-3.0.11-py3-none-any.whl (214 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.4/214.4 kB 39.9 MB/s eta 0:00:00
+Downloading kiwisolver-1.4.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 120.0 MB/s eta 0:00:00
+Downloading lightning_utilities-0.11.2-py3-none-any.whl (26 kB)
+Downloading Markdown-3.6-py3-none-any.whl (105 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 105.4/105.4 kB 26.3 MB/s eta 0:00:00
+Downloading matplotlib-3.9.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 197.4 MB/s eta 0:00:00
+Downloading matplotlib_inline-0.1.7-py3-none-any.whl (9.9 kB)
+Downloading mistune-3.0.2-py3-none-any.whl (47 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.0/48.0 kB 10.9 MB/s eta 0:00:00
+Downloading multidict-6.0.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (128 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 128.7/128.7 kB 29.1 MB/s eta 0:00:00
+Downloading nbclient-0.10.0-py3-none-any.whl (25 kB)
+Downloading nbconvert-7.16.4-py3-none-any.whl (257 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 257.4/257.4 kB 41.0 MB/s eta 0:00:00
+Downloading nbformat-5.10.4-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 18.3 MB/s eta 0:00:00
+Downloading nest_asyncio-1.6.0-py3-none-any.whl (5.2 kB)
+Downloading notebook-7.2.0-py3-none-any.whl (5.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 140.3 MB/s eta 0:00:00
+Downloading notebook_shim-0.2.4-py3-none-any.whl (13 kB)
+Downloading oauthlib-3.2.2-py3-none-any.whl (151 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 151.7/151.7 kB 31.5 MB/s eta 0:00:00
+Downloading overrides-7.7.0-py3-none-any.whl (17 kB)
+Downloading pandas-2.2.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (13.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.0/13.0 MB 157.8 MB/s eta 0:00:00
+Downloading pandocfilters-1.5.1-py2.py3-none-any.whl (8.7 kB)
+Downloading parso-0.8.4-py2.py3-none-any.whl (103 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.7/103.7 kB 24.1 MB/s eta 0:00:00
+Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.8/63.8 kB 15.9 MB/s eta 0:00:00
+Downloading platformdirs-4.2.2-py3-none-any.whl (18 kB)
+Downloading prometheus_client-0.20.0-py3-none-any.whl (54 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 11.6 MB/s eta 0:00:00
+Downloading prompt_toolkit-3.0.46-py3-none-any.whl (386 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 386.3/386.3 kB 62.5 MB/s eta 0:00:00
+Downloading protobuf-5.27.0-cp38-abi3-manylinux2014_x86_64.whl (309 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 309.2/309.2 kB 50.2 MB/s eta 0:00:00
+Downloading psutil-5.9.8-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (288 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 288.2/288.2 kB 46.4 MB/s eta 0:00:00
+Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Downloading pure_eval-0.2.2-py3-none-any.whl (11 kB)
+Downloading pyasn1-0.6.0-py2.py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.3/85.3 kB 19.2 MB/s eta 0:00:00
+Downloading pyasn1_modules-0.4.0-py3-none-any.whl (181 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.2/181.2 kB 37.5 MB/s eta 0:00:00
+Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 27.7 MB/s eta 0:00:00
+Downloading pygments-2.18.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 117.6 MB/s eta 0:00:00
+Downloading pyparsing-3.1.2-py3-none-any.whl (103 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 103.2/103.2 kB 24.4 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 43.2 MB/s eta 0:00:00
+Downloading python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
+Downloading pytorch_lightning-2.1.0-py3-none-any.whl (774 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 774.6/774.6 kB 95.8 MB/s eta 0:00:00
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 75.7 MB/s eta 0:00:00
+Downloading pyzmq-26.0.3-cp311-cp311-manylinux_2_28_x86_64.whl (919 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 919.9/919.9 kB 96.2 MB/s eta 0:00:00
+Downloading referencing-0.35.1-py3-none-any.whl (26 kB)
+Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Downloading rpds_py-0.18.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 109.4 MB/s eta 0:00:00
+Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Downloading seaborn-0.13.2-py3-none-any.whl (294 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 294.9/294.9 kB 48.9 MB/s eta 0:00:00
+Downloading Send2Trash-1.8.3-py3-none-any.whl (18 kB)
+Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading soupsieve-2.5-py3-none-any.whl (36 kB)
+Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+Downloading tabulate-0.9.0-py3-none-any.whl (35 kB)
+Downloading tensorboard-2.14.1-py3-none-any.whl (5.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 138.4 MB/s eta 0:00:00
+Downloading tensorboard_data_server-0.7.2-py3-none-any.whl (2.4 kB)
+Downloading terminado-0.18.1-py3-none-any.whl (14 kB)
+Downloading tinycss2-1.3.0-py3-none-any.whl (22 kB)
+Downloading torchmetrics-1.4.0.post0-py3-none-any.whl (868 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 868.8/868.8 kB 98.2 MB/s eta 0:00:00
+Downloading tornado-6.4-cp38-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (435 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 435.4/435.4 kB 63.5 MB/s eta 0:00:00
+Downloading traitlets-5.14.3-py3-none-any.whl (85 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.4/85.4 kB 18.5 MB/s eta 0:00:00
+Downloading transformers-4.27.0-py3-none-any.whl (6.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.8/6.8 MB 3.5 MB/s eta 0:00:00
+Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl (9.7 kB)
+Downloading tzdata-2024.1-py2.py3-none-any.whl (345 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 345.4/345.4 kB 55.0 MB/s eta 0:00:00
+Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+Downloading wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Downloading webcolors-24.6.0-py3-none-any.whl (14 kB)
+Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+Downloading websocket_client-1.8.0-py3-none-any.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.8/58.8 kB 12.8 MB/s eta 0:00:00
+Downloading werkzeug-3.0.3-py3-none-any.whl (227 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 227.3/227.3 kB 41.3 MB/s eta 0:00:00
+Downloading widgetsnbextension-4.0.11-py3-none-any.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 142.7 MB/s eta 0:00:00
+Downloading yarl-1.9.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (328 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 328.1/328.1 kB 56.8 MB/s eta 0:00:00
+Downloading tokenizers-0.13.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.8/7.8 MB 12.4 MB/s eta 0:00:00
+Installing collected packages: webencodings, wcwidth, tokenizers, pytz, pure-eval, ptyprocess, fastjsonschema, widgetsnbextension, werkzeug, websocket-client, webcolors, uri-template, tzdata, types-python-dateutil, traitlets, tornado, tinycss2, tensorboard-data-server, tabulate, soupsieve, sniffio, six, send2trash, rpds-py, rfc3986-validator, pyzmq, python-json-logger, pyparsing, pygments, pycparser, pyasn1, psutil, protobuf, prompt-toolkit, prometheus-client, platformdirs, pexpect, parso, pandocfilters, overrides, oauthlib, nest-asyncio, multidict, mistune, markdown, lightning-utilities, kiwisolver, jupyterlab-widgets, jupyterlab-pygments, jsonpointer, json5, h11, grpcio, fsspec, frozenlist, fqdn, fonttools, executing, defusedxml, decorator, debugpy, cycler, contourpy, cachetools, babel, attrs, async-lru, absl-py, yarl, terminado, rsa, rfc3339-validator, requests-oauthlib, referencing, python-dateutil, pyasn1-modules, matplotlib-inline, jupyter-core, jedi, httpcore, comm, cffi, bleach, beautifulsoup4, asttokens, anyio, aiosignal, transformers, torchmetrics, stack-data, pandas, matplotlib, jupyter-server-terminals, jupyter-client, jsonschema-specifications, httpx, google-auth, arrow, argon2-cffi-bindings, aiohttp, seaborn, jsonschema, isoduration, ipython, google-auth-oauthlib, argon2-cffi, tensorboard, pytorch-lightning, nbformat, ipywidgets, ipykernel, nbclient, jupyter-events, nbconvert, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab, notebook
+  Attempting uninstall: tokenizers
+    Found existing installation: tokenizers 0.15.1
+    Uninstalling tokenizers-0.15.1:
+      Successfully uninstalled tokenizers-0.15.1
+  Attempting uninstall: transformers
+    Found existing installation: transformers 4.37.2
+    Uninstalling transformers-4.37.2:
+      Successfully uninstalled transformers-4.37.2
+Successfully installed absl-py-2.1.0 aiohttp-3.9.5 aiosignal-1.3.1 anyio-4.4.0 argon2-cffi-23.1.0 argon2-cffi-bindings-21.2.0 arrow-1.3.0 asttokens-2.4.1 async-lru-2.0.4 attrs-23.2.0 babel-2.15.0 beautifulsoup4-4.12.3 bleach-6.1.0 cachetools-5.3.3 cffi-1.16.0 comm-0.2.2 contourpy-1.2.1 cycler-0.12.1 debugpy-1.8.1 decorator-5.1.1 defusedxml-0.7.1 executing-2.0.1 fastjsonschema-2.19.1 fonttools-4.53.0 fqdn-1.5.1 frozenlist-1.4.1 fsspec-2024.6.0 google-auth-2.29.0 google-auth-oauthlib-1.0.0 grpcio-1.64.1 h11-0.14.0 httpcore-1.0.5 httpx-0.27.0 ipykernel-6.29.4 ipython-8.25.0 ipywidgets-8.1.3 isoduration-20.11.0 jedi-0.19.1 json5-0.9.25 jsonpointer-2.4 jsonschema-4.22.0 jsonschema-specifications-2023.12.1 jupyter-client-8.6.2 jupyter-core-5.7.2 jupyter-events-0.10.0 jupyter-lsp-2.2.5 jupyter-server-2.14.1 jupyter-server-terminals-0.5.3 jupyterlab-4.2.1 jupyterlab-pygments-0.3.0 jupyterlab-server-2.27.2 jupyterlab-widgets-3.0.11 kiwisolver-1.4.5 lightning-utilities-0.11.2 markdown-3.6 matplotlib-3.9.0 matplotlib-inline-0.1.7 mistune-3.0.2 multidict-6.0.5 nbclient-0.10.0 nbconvert-7.16.4 nbformat-5.10.4 nest-asyncio-1.6.0 notebook-7.2.0 notebook-shim-0.2.4 oauthlib-3.2.2 overrides-7.7.0 pandas-2.2.2 pandocfilters-1.5.1 parso-0.8.4 pexpect-4.9.0 platformdirs-4.2.2 prometheus-client-0.20.0 prompt-toolkit-3.0.46 protobuf-5.27.0 psutil-5.9.8 ptyprocess-0.7.0 pure-eval-0.2.2 pyasn1-0.6.0 pyasn1-modules-0.4.0 pycparser-2.22 pygments-2.18.0 pyparsing-3.1.2 python-dateutil-2.9.0.post0 python-json-logger-2.0.7 pytorch-lightning-2.1.0 pytz-2024.1 pyzmq-26.0.3 referencing-0.35.1 requests-oauthlib-2.0.0 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 rpds-py-0.18.1 rsa-4.9 seaborn-0.13.2 send2trash-1.8.3 six-1.16.0 sniffio-1.3.1 soupsieve-2.5 stack-data-0.6.3 tabulate-0.9.0 tensorboard-2.14.1 tensorboard-data-server-0.7.2 terminado-0.18.1 tinycss2-1.3.0 tokenizers-0.13.3 torchmetrics-1.4.0.post0 tornado-6.4 traitlets-5.14.3 transformers-4.27.0 types-python-dateutil-2.9.0.20240316 tzdata-2024.1 uri-template-1.3.0 wcwidth-0.2.13 webcolors-24.6.0 webencodings-0.5.1 websocket-client-1.8.0 werkzeug-3.0.3 widgetsnbextension-4.0.11 yarl-1.9.4
+
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate recsys
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+JOB STATISTICS
+==============
+Job ID: 6554722
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: COMPLETED (exit code 0)
+Nodes: 1
+Cores per node: 18
+CPU Utilized: 00:11:12
+CPU Efficiency: 4.99% of 03:44:24 core-walltime
+Job Wall-clock time: 00:12:28
+Memory Utilized: 2.92 GB
+Memory Efficiency: 2.44% of 120.00 GB

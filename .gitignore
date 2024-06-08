@@ -1,5 +1,7 @@
 # exclude all datasets to prevent submitting too large datasets
 DATA/*
+# exclude saved models
+Discrete-Action/model_save/*
 
 # exception to the rule
 !DATA/.gitkeep 
