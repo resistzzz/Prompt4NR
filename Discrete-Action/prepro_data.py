@@ -36,7 +36,7 @@ class MyDataset(Dataset):
 
     def prepro_train(self, imp_ids, behaviors, news_dict, K_samples,
                      max_his=50, max_title_len=10, max_candi_len=20, max_his_len=450):
-        template = "User: <user_sentence> [SEP] News: <candidate_news> [SEP] Dose the user click the news? [MASK]"
+        template = "Bruger: <user_sentence> [SEP] Nyheder: <candidate_news> [SEP] Klikker brugeren på nyhederne? [MASK]"
         for impid, behav in zip(imp_ids, behaviors):
             his_clicks = behav[0][-max_his:]
             his_clicks.reverse()
@@ -81,7 +81,7 @@ class MyDataset(Dataset):
 
     def prepro_dev(self, imp_ids, behaviors, news_dict,
                    max_his=50, max_title_len=10, max_candi_len=20, max_his_len=450):
-        template = "User: <user_sentence> [SEP] News: <candidate_news> [SEP] Dose the user click the news? [MASK]"
+        template = "Bruger: <user_sentence> [SEP] Nyheder: <candidate_news> [SEP] Klikker brugeren på nyhederne? [MASK]"
         for impid, behav in zip(imp_ids, behaviors):
             if len(behav[0]) == 0:
                 continue
