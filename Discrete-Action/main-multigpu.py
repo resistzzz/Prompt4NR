@@ -192,6 +192,8 @@ def fsdp_main(rank, world_size, args):
     # load model
     net, tokenizer = load_model(args.model_name, args)
 
+    print("2) data_path known in process at rank {} = {}".format(rank, args.data_path)) 
+
     # load data
     news_dict = pickle.load(open(os.path.join(args.data_path, 'news.txt'), 'rb'))
     train_dataset = MyDataset(args, tokenizer, news_dict, status='train')
@@ -387,6 +389,7 @@ if __name__ == '__main__':
             args.log_file = log_file
 
     print("Running on %d GPUs" % torch.cuda.device_count())
+    print("1) By .job file specified data_path = " + args.data_path)
 
     WORLD_SIZE = torch.cuda.device_count()
     mp.spawn(fsdp_main,
