@@ -365,28 +365,22 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    data_set = args.data_path.split('/')[-1]
+
     if args.model_save:
-        save_dir = './model_save/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        save_dir = './model_save/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         args.save_dir = save_dir
 
-    if args.data_path == '../DATA/MIND-Demo':
-        if args.log:
-            if not os.path.exists('./log'):
-                os.makedirs('./log')
-            log_file = './log/' + 'bs' + str(args.batch_size) + \
+    if args.log:
+        log_dir = './logs/' + args.model_name + '/' + data_set
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        log_file = log_dir + '/' + 'bs' + str(args.batch_size) + \
                 '-Tbs' + str(args.test_batch_size) + \
                 '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
-    else:   # MIND-Small
-        if args.log:
-            if not os.path.exists('./log-Small'):
-                os.makedirs('./log-Small')
-            log_file = './log-Small/' + 'bs' + str(args.batch_size) + \
-                '-Tbs' + str(args.test_batch_size) + \
-                '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
+        args.log_file = log_file
 
     print("Running on %d GPUs" % torch.cuda.device_count())
     print("1) By .job file specified data_path = " + args.data_path)
