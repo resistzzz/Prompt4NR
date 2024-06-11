@@ -1,0 +1,5 @@
+| distributed init rank 0
+Namespace(data_path='/home/scur1608/Prompt4NR/DATA/full_balanced', model_name='bert-base-multilingual-uncased', epochs=3, batch_size=16, test_batch_size=100, lr=2e-05, wd=0.001, max_his=50, max_tokens=500, num_negs=4, max_his_len=450, device='cuda', world_size=4, model_save=True, log=True, save_dir='./model_save/2024-06-11-11-57-02', log_file='./log-Small/bs16-Tbs100-lr2e-05-97864.txt', rank=0, gpu=0)
+2) data_path known in process at rank 0 = /home/scur1608/Prompt4NR/DATA/full_balanced
+3) Init MyDataset with data_path = /home/scur1608/Prompt4NR/DATA/full_balanced/train.txt
+4) Trying to load data in load_data from path = /home/scur1608/Prompt4NR/DATA/full_balanced/train.txt
