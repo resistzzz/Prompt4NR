@@ -337,6 +337,8 @@ def fsdp_main(rank, world_size, args):
 
 
 if __name__ == '__main__':
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
+
     t0 = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='../DATA/MIND-Small', type=str, help='Path')
