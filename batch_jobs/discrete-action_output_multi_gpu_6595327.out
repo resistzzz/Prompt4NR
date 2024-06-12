@@ -63,8 +63,11 @@ Traceback (most recent call last):
     self.load_data()
   File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/prepro_data.py", line 127, in load_data
     data = pickle.load(open(self.data_path, 'rb'))
+
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Why? Something wrong with the data?
 _pickle.UnpicklingError: pickle data was truncated
+
 
 srun: error: gcn72: task 0: Exited with exit code 1
 srun: Terminating StepId=6595327.0
