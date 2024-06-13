@@ -399,6 +399,6 @@ if __name__ == '__main__':
              join=True)
     t1 = time.time()
     run_time = (t1 - t0) / 3600
-    print('Running time: %0.4f' % run_time)
+    print('Running time TRAIN hours: %0.4f' % run_time)
 
 
