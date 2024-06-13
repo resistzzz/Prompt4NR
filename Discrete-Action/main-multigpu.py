@@ -89,6 +89,7 @@ def train(model, optimizer, data_loader, rank, world_size, epoch, sampler):
 
         loss, scores = model(batch_enc, batch_attn, batch_labs)
 
+        # zero_grad() allocates a huge amount of memory
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -174,6 +175,7 @@ def eval(model, rank, world_size, data_loader):
 
 
 def fsdp_main(rank, world_size, args):
+    # GPU id
     args.rank = rank
     args.world_size = world_size
     args.gpu = rank
@@ -385,7 +387,10 @@ if __name__ == '__main__':
     print("Running on %d GPUs" % torch.cuda.device_count())
     print("1) By .job file specified data_path = " + args.data_path)
 
+    # Create group of processes i.e. world
     WORLD_SIZE = torch.cuda.device_count()
+
+    # Spawn a number of subprocesses and wait for their completion
     mp.spawn(fsdp_main,
              args=(WORLD_SIZE, args),
              nprocs=WORLD_SIZE,
@@ -393,11 +398,5 @@ if __name__ == '__main__':
     t1 = time.time()
     run_time = (t1 - t0) / 3600
     print('Running time: %0.4f' % run_time)
-
-
-
-
-
-
 
 
