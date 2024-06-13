@@ -4,7 +4,7 @@
 #SBATCH --job-name=DiscreteActionTrain
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
-#SBATCH --time=01:30:00
+#SBATCH --time=01:00:00
 #SBATCH --output=discrete-action_train_output_%A.out
 
 module purge
@@ -33,5 +33,8 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 # Check whether the GPU is available
 # srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
 
+# Model to use
+MODEL_NAME=bert-base-multilingual-uncased
+
 # Run python scripts that trains the model. Content of run_py3.sh
-srun python3 -u main-multigpu.py --data_path $TMPDIR$DATA_SET --model_name bert-base-multilingual-uncased --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
+srun python3 -u main-multigpu.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
