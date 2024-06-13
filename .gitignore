@@ -16,4 +16,4 @@ DATA/MIND-Small/*
 
 # exclude saved models
 Discrete-Action/model_save/*
-
+Discrete-Action/temp/*
