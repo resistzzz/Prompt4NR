@@ -181,10 +181,10 @@ def fsdp_main(rank, world_size, args):
     if rank == 0:
         if args.log:
             sys.stdout = Logger(args.log_file, sys.stdout)
-    setup(rank, world_size)
+    #setup(rank, world_size)
 
     print('| distributed init rank {}'.format(rank))
-    dist.barrier()
+    #dist.barrier()
 
     if rank == 0:
         print(args)
@@ -368,7 +368,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data_set = args.data_path.split('/')[-1]
-
+    fsdp_main(1,1,args)
     if args.model_save:
         save_dir = './model_save/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         if not os.path.exists(save_dir):

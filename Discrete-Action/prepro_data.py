@@ -41,7 +41,7 @@ class MyDataset(Dataset):
     # TODO when to encode + decode
     # TODO something's going wrong with the split() that truncates sentences incorrectly.
     def prepro_train(self, imp_ids, behaviors, news_dict, K_samples,
-                     max_his=50, max_topics=200, max_title_len=10, max_candi_len=20, max_his_len=450,
+                     max_his=50, max_topics=150, max_title_len=10, max_candi_len=20, max_his_len=450,
                      prompt_type='combined'):
         if prompt_type == 'combined':
             template = "Past news topics of User from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
