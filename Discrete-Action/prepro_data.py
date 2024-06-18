@@ -42,9 +42,9 @@ class MyDataset(Dataset):
     # TODO something's going wrong with the split() that truncates sentences incorrectly.
     def prepro_train(self, imp_ids, behaviors, news_dict, K_samples,
                      max_his=50, max_topics=150, max_title_len=10, max_candi_len=20, max_his_len=450,
-                     prompt_type='combined'):
+                     prompt_type='sentiment'):
         if prompt_type == 'combined':
-            template = "Past news topics of User from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
+            template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
                 his_clicks = behav[0]
                 his_clicks.reverse()
@@ -113,7 +113,7 @@ class MyDataset(Dataset):
                         sentence = base_sentence.replace("<candidate_news>", title_and_abstract)
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'sentiment':
-            template = "User: <user_sentence> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
+            template = "Bruger: <user_sentence> [SEP] Mest almindelige nyhedsstemning hos brugeren: <user_sentiment> [SEP] Nyheder: <candidate_news> [SEP] Klikker brugeren på nyhederne? [MASKE]"
             for impid, behav in zip(imp_ids, behaviors):
                 his_clicks = behav[0]
                 his_clicks.reverse()
