@@ -46,7 +46,7 @@ class MyDataset(Dataset):
         if prompt_type == 'combined':
             template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
-                his_clicks = behav[0]
+                his_clicks = behav[0][-max_his:]
                 his_clicks.reverse()
                 history_topics = []
                 history_sentiment = []
@@ -115,7 +115,7 @@ class MyDataset(Dataset):
         if prompt_type == 'sentiment':
             template = "Bruger: <user_sentence> [SEP] Mest almindelige nyhedsstemning hos brugeren: <user_sentiment> [SEP] Nyheder: <candidate_news> [SEP] Klikker brugeren på nyhederne? [MASKE]"
             for impid, behav in zip(imp_ids, behaviors):
-                his_clicks = behav[0]
+                his_clicks = behav[0][-max_his:]
                 his_clicks.reverse()
                 his_titles = []
                 history_sentiment = []
@@ -160,6 +160,7 @@ class MyDataset(Dataset):
                         neg_title = ' '.join(neg_title.split(' ')[:max_candi_len])
 
                         sentence = base_sentence.replace("<candidate_news>", neg_title)
+                        x = len(list(sentence.split()))
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
 
         if prompt_type == 'topics':
@@ -249,9 +250,7 @@ class MyDataset(Dataset):
             for news in positives:
                 title = news_dict[news]['title']
                 title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
-
                 title = ' '.join(title.split(' ')[:max_candi_len])
-
                 sentence = base_sentence.replace("<candidate_news>", title)
                 self.data.append({'sentence': sentence, 'target': 1, 'imp': impid})
 
