@@ -1,0 +1,42 @@
+| distributed init rank 0
+Namespace(data_path='/scratch-local/scur1608.6678178/large_full_balanced', model_name='bert-base-multilingual-uncased', epochs=3, batch_size=16, test_batch_size=100, lr=2e-05, wd=0.001, max_his=50, max_tokens=500, num_negs=4, max_his_len=450, device='cuda', world_size=4, model_save=True, log=True, save_dir='./model_save/bert-base-multilingual-uncased/large_full_balanced/2024-06-19-21-36-04', save_dir_bm='./temp/bert-base-multilingual-uncased/large_full_balanced/2024-06-19', log_file='./logs/bert-base-multilingual-uncased/large_full_balanced/bs16-Tbs100-lr2e-05-12545.txt', rank=0, gpu=0)
+2) data_path known in process at rank 0 = /scratch-local/scur1608.6678178/large_full_balanced
+3) Init MyDataset with data_path = /scratch-local/scur1608.6678178/large_full_balanced/train.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6678178/large_full_balanced/train.txt
+3) Init MyDataset with data_path = /scratch-local/scur1608.6678178/large_full_balanced/val.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6678178/large_full_balanced/val.txt
+Vocabulary size of tokenizer after adding new tokens : 105880
+num train: 748225	num val: 94111
+Bruger: [nsep] live kmpe jubelbrl rune strler i afgrende st [nsep] dansk mareridt suvern tauson knkker sammen [nsep] hun skal i glasburet mod verdens bedste jeg har [nsep] mail afslrer dansk kryptosatsning slr fejl [nsep] degns hammerslag giver 65 millioner [nsep] korruptionsdmte nicolas sarkozy taber appelsag [nsep] landsholdskeeper ramt af testikelkrft [nsep] uventet hjlp til holger han skal holdes oppe hele [nsep] begejstret for nye regler benlyst hensynsls adfrd [nsep] jes dorph hiver advokat i retten krver 16 millioner i [nsep] forlader brsen vender tilbage til dr [nsep] kovending qvortrup ngter at vidne i lokkeduesag [nsep] teenagepiger befamlet i bus [nsep] holger runes showkamp i royal arena er aflyst [nsep] stor mystik om mette f ministerchauffr raser [nsep] fik 18000 aarhusianere til at g amok [nsep] mikkel damsgaard kber sommerhus i danmark [nsep] voldsom kollision en person i ambulance med eskorte [nsep] mdrene var med p banen i superligabrag [nsep] lser 50 r gammelt mysterie ved et tilflde [nsep] kong harald udskrevet fra hospitalet er fortsat sygemeldt [nsep] eriksenkonkurrent ude resten af ssonen [nsep] erhvervsordfrere slagter regeringen helt uacceptabelt [nsep] skyhj husleje det betaler din nabo [nsep] regeringens frygt rvhuller [nsep] regeringens frygt rvhuller [nsep] stjernen flopper alcaraz ude af italian open [nsep] justitsminister det skal ikke kunne betale sig [nsep] zanka fr stor aftale [nsep] giroen tager konsekvensen indfrer maskekrav [nsep] danske energigiganter brager frem [nsep] voldsom kollision en person i ambulance med eskorte [nsep] renten presset op [nsep] renten presset op [nsep] pensiondanmark fr ny topchef [nsep] agf retter kritik det er ikke korrekt [nsep] live lastbiler blokerer veje landet over [SEP] Nyheder: 18rig skoleskyder forsgte at sl sin mormor ihjel Bor stadig i huset [SEP] Klikker brugeren på nyhederne? [MASK]
+Bruger: [nsep] usa ukraine stod sandsynligvis bag orkestreret kremlangreb [nsep] intern kritik soloulkke [nsep] usa ukraine stod sandsynligvis bag orkestreret kremlangreb [nsep] earth wind fireguitarist er dd [nsep] usa ukraine stod sandsynligvis bag orkestreret kremlangreb [nsep] tina turner er dd [nsep] usa ukraine stod sandsynligvis bag orkestreret kremlangreb [nsep] nervs tessa det var voldtgt [nsep] anklager livstid til hedvigs morder [nsep] kritisk sygdom i familien melder afbud [nsep] dansk stjerne indstiller karrieren utrolig specielt [nsep] forelsket nora ikke et rebound [nsep] topls igen jeg er gladere med brysterne fremme [nsep] camilla martin raser over hadbeskeder det er usmageligt [nsep] camilla martin raser over hadbeskeder det er usmageligt [nsep] overrasker med gennemsigtig top viser bryster p den rde lber [nsep] camilla martin raser over hadbeskeder det er usmageligt [nsep] fans i ekstase endelig [nsep] fans i ekstase endelig [nsep] fans i ekstase endelig [nsep] efter drlig anmeldelse nu svarer han igen [nsep] fans i ekstase endelig [nsep] vildt fund i busk to mnd varetgtsfngslet [nsep] dansk aktie i vild stigning [nsep] undgr ekskresten [nsep] mark cavendish stopper karrieren [nsep] vil holde zelenskyjtopmde i kbenhavn [nsep] ny sundhedspakke statsministeriet indkalder til pressemde [nsep] undgr ekskresten [nsep] undgr ekskresten [nsep] undgr ekskresten [nsep] efter kyssevideo jeg har ondt af hende [nsep] drama i cannes frt vk af vagter [nsep] fox news i oprr chefen fyret i sexskandale [nsep] fox news i oprr chefen fyret i sexskandale [nsep] david beckham med opsigtsvkkende gave til kong charles [nsep] fckstjerne stod blandt fans [nsep] david beckham med opsigtsvkkende gave til kong charles [nsep] regeringen ophver grnse for nedfrysning af g [nsep] david beckham med opsigtsvkkende gave til kong charles [nsep] [SEP] Nyheder: Stjerne afslrer Vi er blevet forlovet [SEP] Klikker brugeren på nyhederne? [MASK]
+--------------------------------------------------------------------
+start training:  2024-06-19 21:55:40.010447
+Epoch:  0
+lr: 2e-05
+Train Loss: 0.4771
+Train ACC: 0.7998	ACC-Positive: 0.0079	PositiveRatio: 0.2000	[1.87]
+save file ./model_save/bert-base-multilingual-uncased/large_full_balanced/2024-06-19-21-36-04/Epoch-0.pt
+Validate: AUC: 0.5494	MRR: 0.3388	nDCG@5: 0.3760	nDCG@10: 0.4563	[Val-Time: 0.08]
+Best Result: AUC: 0.5494 	MRR: 0.3388 	NDCG@5: 0.3760 	 NDCG@10: 0.4563
+Best Epoch: AUC: 0 	MRR: 0 	NDCG@5: 0 	 NDCG@10: 0
+--------------------------------------------------------------------
+start training:  2024-06-19 23:53:00.086891
+Epoch:  1
+lr: 2e-05
+Train Loss: 0.4625
+Train ACC: 0.8000	ACC-Positive: 0.0126	PositiveRatio: 0.2000	[1.87]
+save file ./model_save/bert-base-multilingual-uncased/large_full_balanced/2024-06-19-21-36-04/Epoch-1.pt
+Validate: AUC: 0.5627	MRR: 0.3505	nDCG@5: 0.3890	nDCG@10: 0.4657	[Val-Time: 0.08]
+Best Result: AUC: 0.5627 	MRR: 0.3505 	NDCG@5: 0.3890 	 NDCG@10: 0.4657
+Best Epoch: AUC: 1 	MRR: 1 	NDCG@5: 1 	 NDCG@10: 1
+--------------------------------------------------------------------
+start training:  2024-06-20 01:50:18.135609
+Epoch:  2
+lr: 2e-05
+Train Loss: 0.4584
+Train ACC: 0.8002	ACC-Positive: 0.0156	PositiveRatio: 0.2000	[1.87]
+save file ./model_save/bert-base-multilingual-uncased/large_full_balanced/2024-06-19-21-36-04/Epoch-2.pt
+Validate: AUC: 0.5640	MRR: 0.3512	nDCG@5: 0.3906	nDCG@10: 0.4674	[Val-Time: 0.08]
+Best Result: AUC: 0.5640 	MRR: 0.3512 	NDCG@5: 0.3906 	 NDCG@10: 0.4674
+Best Epoch: AUC: 2 	MRR: 2 	NDCG@5: 2 	 NDCG@10: 2
+Copy ./model_save/bert-base-multilingual-uncased/large_full_balanced/2024-06-19-21-36-04/Epoch-2.pt >>> ./temp/bert-base-multilingual-uncased/large_full_balanced/2024-06-19/BestModel.pt
