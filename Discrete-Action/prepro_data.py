@@ -57,25 +57,27 @@ class MyDataset(Dataset):
                     # add sentiment to user sentiment history
                     sentiment = news_dict[news]['sentiment']
                     history_sentiment.append(sentiment)
-
+                if history_topics == 0:
+                    continue
                 topics_counted = Counter(history_topics)
                 # sort unique topics based on frequency in users history
                 sorted_topics = [item[0] for item in
                                  sorted(topics_counted.items(), key=lambda item: item[1], reverse=True)][:max_topics]
                 # max_his = max number of topics
-                sorted_topics_ids = self.tokenizer.encode(history_topics, add_special_tokens=False)
+                sorted_topics_sep = '[NSEP] ' + ' [NSEP] '.join(sorted_topics)
+                sorted_topics_ids = self.tokenizer.encode(sorted_topics_sep, add_special_tokens=False)
                 history_topics_tokens = self.tokenizer.decode(sorted_topics_ids)
                 # very unlikely edge case in which user has no topics in its entire history
-                if len(sorted_topics) != 0:
-                    # string of list of strings inside prompt?
-                    base_sentence = template.replace("<user_topics>", history_topics_tokens)
-                # edge case: what if all of user history there are no topics for articles
-                else:
-                    base_sentence = template.replace("<user_topics>", ' ')
                 # count most frequent sentiment and add it to prompt.
                 counted_sentiments = Counter(history_sentiment)
                 most_common_sentiment = counted_sentiments.most_common(1)[0][0]
-                base_sentence = base_sentence.replace("<user_sentiment>", most_common_sentiment)
+
+                sentiment_sep = '[NSEP] '.join([most_common_sentiment])
+                sentiment_id = self.tokenizer.encode(sentiment_sep, add_special_tokens=False)
+                sentiment_token = self.tokenizer.decode(sentiment_id)
+
+                base_sentence = template.replace("<user_sentiment>", sentiment_token)
+                base_sentence = base_sentence.replace("<user_topics>", history_topics_tokens)
 
                 positives = behav[1]
                 negatives = behav[2]
@@ -108,7 +110,7 @@ class MyDataset(Dataset):
                         abstract = re.sub(r'[^A-Za-z0-9 ]+', '', abstract)
                         abstract = ' '.join(abstract.split(' '))
 
-                        title_and_abstract = neg_title + '[NSEP]' + abstract
+                        title_and_abstract = neg_title + ' [NSEP] ' + abstract
                         sentence = base_sentence.replace("<candidate_news>", title_and_abstract)
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'sentiment':
@@ -133,7 +135,10 @@ class MyDataset(Dataset):
 
                 counted_sentiments = Counter(history_sentiment)
                 most_common_sentiment = counted_sentiments.most_common(1)[0][0]
-                base_sentence = base_sentence.replace("<user_sentiment>", most_common_sentiment)
+                sentiment_sep = '[NSEP] '.join([most_common_sentiment])
+                sentiment_id = self.tokenizer.encode(sentiment_sep, add_special_tokens=False)
+                sentiment_token = self.tokenizer.decode(sentiment_id)
+                base_sentence = base_sentence.replace("<user_sentiment>", sentiment_token)
 
                 positives = behav[1]
                 negatives = behav[2]
@@ -159,7 +164,6 @@ class MyDataset(Dataset):
                         neg_title = ' '.join(neg_title.split(' ')[:max_candi_len])
 
                         sentence = base_sentence.replace("<candidate_news>", neg_title)
-                        x = len(list(sentence.split()))
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
 
         if prompt_type == 'topics':
@@ -177,14 +181,14 @@ class MyDataset(Dataset):
                                  sorted(topics_counted.items(), key=lambda item: item[1], reverse=True)][:max_topics]
                 # maybe this is essential
                 sorted_topics = '[NSEP] ' + ' [NSEP] '.join(sorted_topics)
-                sorted_topics_ids = self.tokenizer.encode(history_topics, add_special_tokens=False)[:max_his_len]
+                sorted_topics_ids = self.tokenizer.encode(sorted_topics, add_special_tokens=False)[:max_his_len]
                 history_topics_tokens = self.tokenizer.decode(sorted_topics_ids)
-                if len(sorted_topics) != 0:
-                    # string of list of strings inside prompt?
-                    base_sentence = template.replace("<topics>", history_topics_tokens)
                 # edge case: what if all of user history there are no topics for articles
-                else:
-                    base_sentence = template.replace("<topics>", ' ')
+                if len(sorted_topics) == 0:
+                    continue
+
+                base_sentence = template.replace("<topics>", history_topics_tokens)
+
 
                 positives = behav[1]
                 negatives = behav[2]
@@ -194,10 +198,13 @@ class MyDataset(Dataset):
                     title = news_dict[news]['title']
                     title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
                     title = ' '.join(title.split(' ')[:max_candi_len])
+
+
                     sentence = base_sentence.replace("<candidate_news>", title)
                     # topics
                     article_topics = list(news_dict[news]['topics'])
-                    article_topics_ids = self.tokenizer.encode(article_topics, add_special_tokens=False)[:max_his_len]
+                    article_topics_sep = '[NSEP] '.join(article_topics)
+                    article_topics_ids = self.tokenizer.encode(article_topics_sep, add_special_tokens=False)[:max_his_len]
                     article_topics_tokens = self.tokenizer.decode(article_topics_ids)
                     sentence = sentence.replace('<candidate_topics>', article_topics_tokens)
 
@@ -216,7 +223,8 @@ class MyDataset(Dataset):
 
                         # topics
                         article_topics = list(news_dict[news]['topics'])
-                        article_topics_ids = self.tokenizer.encode(article_topics, add_special_tokens=False)[
+                        article_topics_sep = '[NSEP] '.join(article_topics)
+                        article_topics_ids = self.tokenizer.encode(article_topics_sep, add_special_tokens=False)[
                                              :max_his_len]
                         article_topics_tokens = self.tokenizer.decode(article_topics_ids)
                         sentence = sentence.replace('<candidate_topics>', article_topics_tokens)
@@ -227,7 +235,7 @@ class MyDataset(Dataset):
     def prepro_dev(self, imp_ids, behaviors, news_dict,
                    max_his=50, max_title_len=10, max_candi_len=20, max_topics=150, max_his_len=450, prompt_type='sentiment'):
         if prompt_type == 'combined':
-            template = "User: <user_sentence> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
+            template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
                 if len(behav[0]) == 0:
                     continue
@@ -243,25 +251,26 @@ class MyDataset(Dataset):
                     # add sentiment to user sentiment history
                     sentiment = news_dict[news]['sentiment']
                     history_sentiment.append(sentiment)
-
                 topics_counted = Counter(history_topics)
                 # sort unique topics based on frequency in users history
                 sorted_topics = [item[0] for item in
                                  sorted(topics_counted.items(), key=lambda item: item[1], reverse=True)][:max_topics]
+
+                sorted_topics = '[NSEP] ' + ' [NSEP] '.join(sorted_topics)
                 # max_his = max number of topics
-                sorted_topics_ids = self.tokenizer.encode(history_topics, add_special_tokens=False)
+                sorted_topics_ids = self.tokenizer.encode(sorted_topics, add_special_tokens=False)
                 history_topics_tokens = self.tokenizer.decode(sorted_topics_ids)
                 # very unlikely edge case in which user has no topics in its entire history
-                if len(sorted_topics) != 0:
-                    # string of list of strings inside prompt?
-                    base_sentence = template.replace("<user_topics>", history_topics_tokens)
-                # edge case: what if all of user history there are no topics for articles
-                else:
-                    base_sentence = template.replace("<user_topics>", ' ')
+                if len(sorted_topics) == 0:
+                    continue
+                base_sentence = template.replace("<user_topics>", history_topics_tokens)
                 # count most frequent sentiment and add it to prompt.
                 counted_sentiments = Counter(history_sentiment)
                 most_common_sentiment = counted_sentiments.most_common(1)[0][0]
-                base_sentence = base_sentence.replace("<user_sentiment>", most_common_sentiment)
+                sentiment_sep = '[NSEP] '.join([most_common_sentiment])
+                sentiment_id = self.tokenizer.encode(sentiment_sep, add_special_tokens=False)
+                sentiment_token = self.tokenizer.decode(sentiment_id)
+                base_sentence = base_sentence.replace("<user_sentiment>", sentiment_token)
 
                 positives = behav[1]
                 negatives = behav[2]
@@ -289,7 +298,7 @@ class MyDataset(Dataset):
                     abstract = re.sub(r'[^A-Za-z0-9 ]+', '', abstract)
                     abstract = ' '.join(abstract.split(' '))
 
-                    title_and_abstract = neg_title + '[NSEP]' + abstract
+                    title_and_abstract = neg_title + ' [NSEP] ' + abstract
                     sentence = base_sentence.replace("<candidate_news>", title_and_abstract)
                     self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'sentiment':
@@ -313,10 +322,13 @@ class MyDataset(Dataset):
                 his_sen_ids = self.tokenizer.encode(his_sen, add_special_tokens=False)[:max_his_len]
                 his_sen = self.tokenizer.decode(his_sen_ids)
                 base_sentence = template.replace("<user_sentence>", his_sen)
-
+                #sentiments
                 counted_sentiments = Counter(history_sentiment)
                 most_common_sentiment = counted_sentiments.most_common(1)[0][0]
-                base_sentence = base_sentence.replace("<user_sentiment>", most_common_sentiment)
+                sentiment_sep = '[NSEP] '.join([most_common_sentiment])
+                sentiment_id = self.tokenizer.encode(sentiment_sep, add_special_tokens=False)
+                sentiment_token = self.tokenizer.decode(sentiment_id)
+                base_sentence = base_sentence.replace("<user_sentiment>", sentiment_token)
 
                 positives = behav[1]
                 negatives = behav[2]
@@ -355,7 +367,7 @@ class MyDataset(Dataset):
                                  sorted(topics_counted.items(), key=lambda item: item[1], reverse=True)][:max_topics]
                 # maybe this is essential
                 sorted_topics = '[NSEP] ' + ' [NSEP] '.join(sorted_topics)
-                sorted_topics_ids = self.tokenizer.encode(history_topics, add_special_tokens=False)[:max_his_len]
+                sorted_topics_ids = self.tokenizer.encode(sorted_topics, add_special_tokens=False)[:max_his_len]
                 history_topics_tokens = self.tokenizer.decode(sorted_topics_ids)
                 if len(sorted_topics) != 0:
                     # string of list of strings inside prompt?
@@ -375,7 +387,8 @@ class MyDataset(Dataset):
                     sentence = base_sentence.replace("<candidate_news>", title)
                     # topics
                     article_topics = list(news_dict[news]['topics'])
-                    article_topics_ids = self.tokenizer.encode(article_topics, add_special_tokens=False)[:max_his_len]
+                    article_topics_sep = '[NSEP] '.join(article_topics)
+                    article_topics_ids = self.tokenizer.encode(article_topics_sep, add_special_tokens=False)[:max_his_len]
                     article_topics_tokens = self.tokenizer.decode(article_topics_ids)
                     sentence = sentence.replace('<candidate_topics>', article_topics_tokens)
 
@@ -389,8 +402,9 @@ class MyDataset(Dataset):
 
                         # topics
                         article_topics = list(news_dict[news]['topics'])
-                        article_topics_ids = self.tokenizer.encode(article_topics, add_special_tokens=False)[
-                                             :max_his_len]
+                        article_topics_sep = '[NSEP] '.join(article_topics)
+                        article_topics_ids = self.tokenizer.encode(article_topics_sep, add_special_tokens=False)[:max_his_len]
+
                         article_topics_tokens = self.tokenizer.decode(article_topics_ids)
                         sentence = sentence.replace('<candidate_topics>', article_topics_tokens)
 

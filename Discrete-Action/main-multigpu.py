@@ -370,7 +370,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     #remove before flight
-    #fsdp_main(1,1,args)
+    fsdp_main(1,1,args)
     data_set = args.data_path.split('/')[-1]
     if args.model_save:
         save_dir = './model_save/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
