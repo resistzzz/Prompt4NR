@@ -37,4 +37,4 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 MODEL_NAME=bert-base-multilingual-uncased
 
 # Run python script that predicts given the specified model file. Content of run_py3.sh
-srun python3 -u predict.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATASET/$date/BestModel.pt --log True --world_size 4
+srun python3 -u predict.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
