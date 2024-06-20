@@ -22,7 +22,7 @@ TEMPLATE=$FW/Discrete-Action
 cd $TEMPLATE
 
 # Copy datasets to temp folder to save read/write operations computational costs
-export DATA_SET=/full_balanced
+export DATA_SET=/large_full_balanced
 
 if [ ! -d "$TMPDIR$DATA_SET" ]; then
     mkdir $TMPDIR$DATA_SET
