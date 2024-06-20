@@ -36,6 +36,7 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 # Model to use
 MODEL_NAME=bert-base-multilingual-uncased
 date=$(date '+%Y-%m-%d')
+# date=2024-06-19
 
 # Run python scripts that train model and predicts. Content of run_py3.sh
 srun python3 -u main-multigpu.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True

@@ -35,6 +35,8 @@ rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
 
 # Model to use
 MODEL_NAME=bert-base-multilingual-uncased
+date=$(date '+%Y-%m-%d')
+date=2024-06-19
 
 # Run python script that predicts given the specified model file. Content of run_py3.sh
 srun python3 -u predict.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
