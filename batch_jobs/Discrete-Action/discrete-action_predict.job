@@ -4,7 +4,7 @@
 #SBATCH --job-name=DiscreteActionPredict
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=18
-#SBATCH --time=02:00:00
+#SBATCH --time=01:00:00
 #SBATCH --output=discrete-action_predict_output_%A.out
 
 module purge
