@@ -49,7 +49,7 @@ class MyDataset(Dataset):
                 if len(behav[0]) == 0:
                     continue
                 his_clicks = behav[0]
-                if attention_weights != None:
+                if attention_weights_dict != None:
                     attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
                     attended_clicks = list(zip(his_clicks, attention_weights))
                     attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
@@ -174,12 +174,22 @@ class MyDataset(Dataset):
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'sentiment':
             template = "User: <user_sentence> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
-            for impid, behav in zip(imp_ids, behaviors):
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+            for impid, behav, user in zip(imp_ids, behaviors, users):
+                if len(behav[0]) == 0:
+                    continue
+                his_clicks = behav[0]
+                if attention_weights != None:
+                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
+                    attended_clicks = list(zip(his_clicks, attention_weights))
+                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
+                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
+                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                else:
+                    his_clicks.reverse()
+                    his_clicks_sorted = his_clicks[:max_his]
                 his_titles = []
                 history_sentiment = []
-                for news in his_clicks:
+                for news in his_clicks_sorted:
                     title = news_dict[news]['title']
                     title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
                     title = ' '.join(title.split(' ')[:max_title_len])
