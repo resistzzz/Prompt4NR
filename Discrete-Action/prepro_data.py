@@ -15,6 +15,7 @@ class MyDataset(Dataset):
         self.args = args
         self.status = status
         self.data = []
+        self.attention_weight_dict = None
         self.imp_lens = []
         if self.status == 'train':
             self.data_path = os.path.join(args.data_path, 'train.txt')
@@ -39,18 +40,76 @@ class MyDataset(Dataset):
     # TODO when do we have to split words up, also in list? we can tokenize a list of topics
     # TODO when to encode + decode
     # TODO something's going wrong with the split() that truncates sentences incorrectly.
-    def prepro_train(self, imp_ids, behaviors, news_dict, K_samples,
-                     max_his=50, max_topics=150, max_title_len=10, max_candi_len=20, max_his_len=450,
+    def prepro_train(self, imp_ids, behaviors, users, news_dict, K_samples, attention_weights_dict=None,
+                     max_topics=150, max_title_len=10, max_his = 50, max_candi_len=20, max_his_len=450,
                      prompt_type='sentiment'):
+        if prompt_type == 'original':
+            template = "User: <user_sentence> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
+            for impid, behav, user in zip(imp_ids, behaviors, users):
+                if len(behav[0]) == 0:
+                    continue
+                his_clicks = behav[0]
+                if attention_weights != None:
+                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
+                    attended_clicks = list(zip(his_clicks, attention_weights))
+                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
+                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
+                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                else:
+                    his_clicks.reverse()
+                    his_clicks_sorted = his_clicks[:max_his]
+
+                his_titles = []
+                for news in his_clicks_sorted:
+                    title = news_dict[news]['title']
+                    title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
+
+                    title = ' '.join(title.split(' ')[:max_title_len])
+
+                    his_titles.append(title)
+                his_sen = '[NSEP] ' + ' [NSEP] '.join(his_titles)
+                his_sen_ids = self.tokenizer.encode(his_sen, add_special_tokens=False)[:max_his_len]
+                his_sen = self.tokenizer.decode(his_sen_ids)
+                base_sentence = template.replace("<user_sentence>", his_sen)
+
+                positives = behav[1]
+                negatives = behav[2]
+                for news in positives:
+                    title = news_dict[news]['title']
+                    title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
+
+                    title = ' '.join(title.split(' ')[:max_candi_len])
+
+                    sentence = base_sentence.replace("<candidate_news>", title)
+                    self.data.append({'sentence': sentence, 'target': 1, 'imp': impid})
+
+                for neg in negatives:
+                    neg_title = news_dict[neg]['title']
+                    neg_title = re.sub(r'[^A-Za-z0-9 ]+', '', neg_title)
+
+                    neg_title = ' '.join(neg_title.split(' ')[:max_candi_len])
+
+                    sentence = base_sentence.replace("<candidate_news>", neg_title)
+                    self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'combined':
             template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
-            for impid, behav in zip(imp_ids, behaviors):
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+            for impid, behav, user in zip(imp_ids, behaviors, users):
+                if len(behav[0]) == 0:
+                    continue
+                his_clicks = behav[0]
+                if attention_weights != None:
+                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
+                    attended_clicks = list(zip(his_clicks, attention_weights))
+                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
+                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
+                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                else:
+                    his_clicks.reverse()
+                    his_clicks_sorted = his_clicks[:max_his]
                 history_topics = []
                 history_sentiment = []
                 # build list of all topics in history of user
-                for news in his_clicks:
+                for news in his_clicks_sorted:
                     # add topics to user topics history
                     article_topics = list(news_dict[news]['topics'])
                     history_topics += article_topics
@@ -188,8 +247,6 @@ class MyDataset(Dataset):
                     continue
 
                 base_sentence = template.replace("<topics>", history_topics_tokens)
-
-
                 positives = behav[1]
                 negatives = behav[2]
 
@@ -231,9 +288,56 @@ class MyDataset(Dataset):
 
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
 
+    def prepro_dev(self, imp_ids, behaviors, users, news_dict, max_his=50, attention_weights_dict=None,
+                             max_title_len=10, max_candi_len=20, max_topics=150, max_his_len=450, prompt_type='sentiment'):
+        if prompt_type == 'original':
+            template = "User: <user_sentence> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
+            for impid, behav, user in zip(imp_ids, behaviors, users):
+                if len(behav[0]) == 0:
+                    continue
+                his_clicks = behav[0]
+                if attention_weights != None:
+                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
+                    attended_clicks = list(zip(his_clicks, attention_weights))
+                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
+                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
+                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                else:
+                    his_clicks.reverse()
+                    his_clicks_sorted = his_clicks[:max_his]
+                his_titles = []
+                for news in his_clicks_sorted:
+                    title = news_dict[news]['title']
+                    title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
 
-    def prepro_dev(self, imp_ids, behaviors, news_dict,
-                   max_his=50, max_title_len=10, max_candi_len=20, max_topics=150, max_his_len=450, prompt_type='sentiment'):
+                    title = ' '.join(title.split(' ')[:max_title_len])
+
+                    his_titles.append(title)
+                his_sen = '[NSEP] ' + ' [NSEP] '.join(his_titles)
+                his_sen_ids = self.tokenizer.encode(his_sen, add_special_tokens=False)[:max_his_len]
+                his_sen = self.tokenizer.decode(his_sen_ids)
+                base_sentence = template.replace("<user_sentence>", his_sen)
+
+                positives = behav[1]
+                negatives = behav[2]
+                for news in positives:
+                    title = news_dict[news]['title']
+                    title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
+
+                    title = ' '.join(title.split(' ')[:max_candi_len])
+
+                    sentence = base_sentence.replace("<candidate_news>", title)
+                    self.data.append({'sentence': sentence, 'target': 1, 'imp': impid})
+
+                for neg in negatives:
+                    neg_title = news_dict[neg]['title']
+                    neg_title = re.sub(r'[^A-Za-z0-9 ]+', '', neg_title)
+
+                    neg_title = ' '.join(neg_title.split(' ')[:max_candi_len])
+
+                    sentence = base_sentence.replace("<candidate_news>", neg_title)
+                    self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
+
         if prompt_type == 'combined':
             template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
@@ -303,14 +407,22 @@ class MyDataset(Dataset):
                     self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'sentiment':
             template = "User: <user_sentence> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP] Does the user click the news? [MASK]"
-            for impid, behav in zip(imp_ids, behaviors):
+            for impid, behav, user in zip(imp_ids, behaviors, users):
                 if len(behav[0]) == 0:
                     continue
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+                his_clicks = behav[0]
+                if attention_weights != None:
+                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
+                    attended_clicks = list(zip(his_clicks, attention_weights))
+                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
+                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
+                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                else:
+                    his_clicks.reverse()
+                    his_clicks_sorted = his_clicks[:max_his]
                 his_titles = []
                 history_sentiment = []
-                for news in his_clicks:
+                for news in his_clicks_sorted:
                     title = news_dict[news]['title']
                     title = re.sub(r'[^A-Za-z0-9 ]+', '', title)
                     title = ' '.join(title.split(' ')[:max_title_len])
@@ -409,16 +521,15 @@ class MyDataset(Dataset):
                         sentence = sentence.replace('<candidate_topics>', article_topics_tokens)
 
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
-
     def load_data(self):
         data = pickle.load(open(self.data_path, 'rb'))
         imps, users, times, behaviors = self.obtain_data(data)
         if self.status == 'train':
-            self.prepro_train(imps, behaviors, self.news_dict, self.args.num_negs, self.args.max_his,
+            self.prepro_tain(imps, behaviors, users, self.news_dict, K_samples=self.args.num_negs, max_his=self.args.max_his, attention_weights_dict=self.attention_weights_dict,
                             prompt_type=self.args.prompt_type, max_topics=self.args.max_topics, max_his_len=self.args.max_his_len)
         else:
-            self.prepro_dev(imps, behaviors, self.news_dict, self.args.max_his,
-                            prompt_type=self.args.prompt_type, max_topics=self.args.max_topics, max_his_len=self.args.max_his_len)
+            self.prepro_dev(imps, behaviors, users, self.news_dict, max_his=self.args.max_his, attention_weights_dict=self.attention_weights_dict,
+                            prompt_type=self.args.prompt_type ,max_topics=self.args.max_topics, max_his_len=self.args.max_his_len)
 
     def collate_fn(self, batch):
         sentences = [x['sentence'] for x in batch]
