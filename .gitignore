@@ -6,11 +6,9 @@ DATA/MIND-Small/*
 
 # exception to the rule
 !DATA/.gitkeep
-!DATA/ebnerd/
 !DATA/full_balanced/
 !DATA/MIND-Small/
 
-!DATA/ebnerd/.gitkeep
 !DATA/full_balanced/.gitkeep
 !DATA/MIND-Small/.gitkeep
 
