@@ -386,8 +386,6 @@ if __name__ == '__main__':
                 '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
             args.log_file = log_file
 
-    print("Running on %d GPUs" % torch.cuda.device_count())
-
     WORLD_SIZE = torch.cuda.device_count()
     mp.spawn(fsdp_main,
              args=(WORLD_SIZE, args),
