@@ -1,0 +1,150 @@
+============================================================================================== 
+Warning! Mixing Conda and module environments may lead to corruption of the
+user environment. 
+We do not recommend users mixing those two environments unless absolutely
+necessary. Note that 
+SURF does not provide any support for Conda environment.
+For more information, please refer to our software policy page:
+https://servicedesk.surf.nl/wiki/display/WIKI/Software+policy+Snellius#SoftwarepolicySnellius-UseofAnacondaandMinicondaenvironmentsonSnellius 
+
+Remember that many packages have already been installed on the system and can
+be loaded using 
+the 'module load <package__name>' command. If you are uncertain if a package is
+already available 
+on the system, please use 'module avail' or 'module spider' to search for it.
+============================================================================================== 
+Running on 4 GPUs
+1) By .job file specified data_path = /scratch-local/scur1608.6595327/full_balanced
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+| distributed init rank 3
+2) data_path known in process at rank 3 = /scratch-local/scur1608.6595327/full_balanced
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+| distributed init rank 1
+2) data_path known in process at rank 1 = /scratch-local/scur1608.6595327/full_balanced
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+| distributed init rank 2
+2) data_path known in process at rank 2 = /scratch-local/scur1608.6595327/full_balanced
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/train.txt
+Traceback (most recent call last):
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/main-multigpu.py", line 395, in <module>
+    mp.spawn(fsdp_main,
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 246, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 202, in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 163, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 2 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 74, in _wrap
+    fn(i, *args)
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/main-multigpu.py", line 199, in fsdp_main
+    train_dataset = MyDataset(args, tokenizer, news_dict, status='train')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/prepro_data.py", line 28, in __init__
+    self.load_data()
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/prepro_data.py", line 127, in load_data
+    data = pickle.load(open(self.data_path, 'rb'))
+
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+# Why? Something wrong with the data?
+_pickle.UnpicklingError: pickle data was truncated
+
+
+srun: error: gcn72: task 0: Exited with exit code 1
+srun: Terminating StepId=6595327.0
+/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/huggingface_hub-0.23.3-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/huggingface_hub-0.23.3-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/huggingface_hub-0.23.3-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/huggingface_hub-0.23.3-py3.8.egg/huggingface_hub/file_download.py:1132: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.bias', 'cls.seq_relationship.weight']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some weights of the model checkpoint at bert-base-multilingual-uncased were not used when initializing BertForMaskedLM: ['cls.seq_relationship.weight', 'cls.seq_relationship.bias']
+- This IS expected if you are initializing BertForMaskedLM from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertForMaskedLM from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Token indices sequence length is longer than the specified maximum sequence length for this model (591 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (591 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (591 > 512). Running this sequence through the model will result in indexing errors
+Token indices sequence length is longer than the specified maximum sequence length for this model (591 > 512). Running this sequence through the model will result in indexing errors
+| distributed init rank 1
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+| distributed init rank 3
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+| distributed init rank 2
+3) Init MyDataset with data_path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6595327/full_balanced/test.txt
+Traceback (most recent call last):
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/predict.py", line 241, in <module>
+    mp.spawn(ddp_main,
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 246, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 202, in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 163, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 74, in _wrap
+    fn(i, *args)
+  File "/gpfs/home3/scur1608/Prompt4NR/Discrete-Action/predict.py", line 166, in ddp_main
+    net.module.load_state_dict(torch.load(args.model_file, map_location=map_location))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/serialization.py", line 986, in load
+    with _open_file_like(f, 'rb') as opened_file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/serialization.py", line 435, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/scur1608/.conda/envs/recsys/lib/python3.11/site-packages/torch/serialization.py", line 416, in __init__
+    super().__init__(open(name, mode))
+                     ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './temp/BestModel.pt'
+
+srun: error: gcn72: task 0: Exited with exit code 1
+srun: Terminating StepId=6595327.1
+
+JOB STATISTICS
+==============
+Job ID: 6595327
+Cluster: snellius
+User/Group: scur1608/scur1608
+State: RUNNING
+Nodes: 1
+Cores per node: 72
+CPU Utilized: 00:01:46
+CPU Efficiency: 1.04% of 02:50:24 core-walltime
+Job Wall-clock time: 00:02:22
+Memory Utilized: 1.32 MB
+Memory Efficiency: 0.00% of 480.00 GB
+WARNING: Efficiency statistics may be misleading for RUNNING jobs.

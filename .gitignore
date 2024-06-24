@@ -1,7 +1,7 @@
 # exclude all datasets to prevent submitting too large datasets
 DATA/*
 DATA/ebnerd/*
-DATA/full_balanced/*
+#DATA/full_balanced/*
 DATA/MIND-Small/*
 
 # exception to the rule
@@ -16,4 +16,4 @@ DATA/MIND-Small/*
 
 # exclude saved models
 Discrete-Action/model_save/*
-
+Discrete-Action/temp/*

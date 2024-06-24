@@ -23,6 +23,8 @@ class MyDataset(Dataset):
             self.data_path = os.path.join(args.data_path, 'val.txt')
         else:
             self.data_path = os.path.join(args.data_path, 'test.txt')
+        
+        print("3) Init MyDataset with data_path = " + self.data_path)
         self.load_data()
 
     def __len__(self):
@@ -121,6 +123,7 @@ class MyDataset(Dataset):
                 self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
 
     def load_data(self):
+        print("4) Trying to load data in load_data from path = " + self.data_path)
         data = pickle.load(open(self.data_path, 'rb'))
         imps, users, times, behaviors = self.obtain_data(data)
         if self.status == 'train':

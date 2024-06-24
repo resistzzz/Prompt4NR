@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --gpus=4
+#SBATCH --job-name=DiscreteActionPredict
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=18
+#SBATCH --time=01:00:00
+#SBATCH --output=discrete-action_predict_output_%A.out
+
+module purge
+module load 2022
+module load Anaconda3/2022.05
+
+# Activate environment
+source activate recsys
+
+# Path of framework
+FW=$HOME/Prompt4NR
+TEMPLATE=$FW/Discrete-Action
+
+# Change directory to the model template
+cd $TEMPLATE
+
+# Copy datasets to temp folder to save read/write operations computational costs
+export DATA_SET=/large_full_balanced
+
+if [ ! -d "$TMPDIR$DATA_SET" ]; then
+    mkdir $TMPDIR$DATA_SET
+fi
+
+rsync -a $FW/DATA$DATA_SET/ $TMPDIR$DATA_SET
+
+# Check whether the GPU is available
+# srun python -uc "import torch; print('GPU available?', torch.cuda.is_available())"
+
+# Model to use
+MODEL_NAME=bert-base-multilingual-uncased
+date=$(date '+%Y-%m-%d')
+date=2024-06-19
+
+# Run python script that predicts given the specified model file. Content of run_py3.sh
+srun python3 -u predict.py --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
