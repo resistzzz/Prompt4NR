@@ -89,6 +89,7 @@ def train(model, optimizer, data_loader, rank, world_size, epoch, sampler):
 
         loss, scores = model(batch_enc, batch_attn, batch_labs)
 
+        # zero_grad() allocates a huge amount of memory
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -174,6 +175,7 @@ def eval(model, rank, world_size, data_loader):
 
 
 def fsdp_main(rank, world_size, args):
+    # GPU id
     args.rank = rank
     args.world_size = world_size
     args.gpu = rank
@@ -191,6 +193,8 @@ def fsdp_main(rank, world_size, args):
 
     # load model
     net, tokenizer = load_model(args.model_name, args)
+
+    print("2) data_path known in process at rank {} = {}".format(rank, args.data_path)) 
 
     # load data
     news_dict = pickle.load(open(os.path.join(args.data_path, 'news.txt'), 'rb'))
@@ -263,6 +267,7 @@ def fsdp_main(rank, world_size, args):
             print("Train Loss: %0.4f" % loss)
             print("Train ACC: %0.4f\tACC-Positive: %0.4f\tPositiveRatio: %0.4f\t[%0.2f]" %
                   (acc_tra, acc_pos_tra, pos_ratio_tra, train_spend))
+            # Save model of current epoch
             if args.model_save:
                 file = args.save_dir + '/Epoch-' + str(epoch) + '.pt'
                 print('save file', file)
@@ -324,17 +329,18 @@ def fsdp_main(rank, world_size, args):
     if rank == 0:
         best_epochs = [best_val_epoch['auc'], best_val_epoch['mrr'], best_val_epoch['ndcg5'], best_val_epoch['ndcg10']]
         best_epoch = max(set(best_epochs), key=best_epochs.count)
+        # Save BEST model
         if args.model_save:
             old_file = args.save_dir + '/Epoch-' + str(best_epoch) + '.pt'
-            if not os.path.exists('./temp'):
-                os.makedirs('./temp')
-            copy_file = './temp' + '/BestModel.pt'
+            copy_file = args.save_dir_bm + '/BestModel.pt'
             shutil.copy(old_file, copy_file)
             print('Copy ' + old_file + ' >>> ' + copy_file)
     cleanup()
 
 
 if __name__ == '__main__':
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:128"
+
     t0 = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='../DATA/MIND-Small', type=str, help='Path')
@@ -363,42 +369,44 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
+    data_set = args.data_path.split('/')[-1]
+
     if args.model_save:
-        save_dir = './model_save/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
+        # Location to save model per epoch
+        save_dir = './model_save/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
         args.save_dir = save_dir
 
-    if args.data_path == '../DATA/MIND-Demo':
-        if args.log:
-            if not os.path.exists('./log'):
-                os.makedirs('./log')
-            log_file = './log/' + 'bs' + str(args.batch_size) + \
-                '-Tbs' + str(args.test_batch_size) + \
-                '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
-    else:   # MIND-Small
-        if args.log:
-            if not os.path.exists('./log-Small'):
-                os.makedirs('./log-Small')
-            log_file = './log-Small/' + 'bs' + str(args.batch_size) + \
-                '-Tbs' + str(args.test_batch_size) + \
-                '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
+        # Location to save BEST model (path does only include the date because when you want to immediately run the prediction script subsequently you don't know the time yet)
+        save_dir_bm = './temp/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d')
+        if not os.path.exists(save_dir_bm):
+            os.makedirs(save_dir_bm)
+        args.save_dir_bm = save_dir_bm
 
+    if args.log:
+        log_dir = './logs/' + args.model_name + '/' + data_set
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        log_file = log_dir + '/' + 'bs' + str(args.batch_size) + \
+                '-Tbs' + str(args.test_batch_size) + \
+                '-lr' + str(args.lr) + '-' + str(datetime.now())[-5:]+'.txt'
+        args.log_file = log_file
+
+
+    
+
+    print("Running on %d GPUs" % torch.cuda.device_count())
+    print("1) By .job file specified data_path = " + args.data_path)
+
+    # Create group of processes i.e. world
     WORLD_SIZE = torch.cuda.device_count()
+
+    # Spawn a number of subprocesses and wait for their completion
     mp.spawn(fsdp_main,
              args=(WORLD_SIZE, args),
              nprocs=WORLD_SIZE,
              join=True)
     t1 = time.time()
     run_time = (t1 - t0) / 3600
-    print('Running time: %0.4f' % run_time)
-
-
-
-
-
-
-
-
+    print('Running time TRAIN hours: %0.4f' % run_time)
