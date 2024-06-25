@@ -3,6 +3,7 @@ DATA/*
 DATA/ebnerd/*
 #DATA/full_balanced/*
 DATA/MIND-Small/*
+DATA/user_history_selection/*
 
 # exception to the rule
 !DATA/.gitkeep
@@ -11,7 +12,7 @@ DATA/MIND-Small/*
 
 !DATA/full_balanced/.gitkeep
 !DATA/MIND-Small/.gitkeep
-
+!DATA/user_history_selection/.gitkeep
 # exclude saved models
 Discrete-Action/model_save/*
 Discrete-Action/temp/*
