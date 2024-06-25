@@ -9,13 +9,13 @@ from collections import Counter
 
 
 class MyDataset(Dataset):
-    def __init__(self, args, tokenizer, news_dict, status='train'):
+    def __init__(self, args, tokenizer, news_dict, cluster_dict = None, status='train'):
         self.tokenizer = tokenizer
         self.news_dict = news_dict
         self.args = args
         self.status = status
         self.data = []
-        self.attention_weight_dict = None
+        self.attention_weight_dict = cluster_dict
         self.imp_lens = []
         if self.status == 'train':
             self.data_path = os.path.join(args.data_path, 'train.txt')
@@ -50,11 +50,24 @@ class MyDataset(Dataset):
                     continue
                 his_clicks = behav[0]
                 if attention_weights_dict != None:
-                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
-                    attended_clicks = list(zip(his_clicks, attention_weights))
-                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
-                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
-                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
                 else:
                     his_clicks.reverse()
                     his_clicks_sorted = his_clicks[:max_his]
@@ -97,12 +110,25 @@ class MyDataset(Dataset):
                 if len(behav[0]) == 0:
                     continue
                 his_clicks = behav[0]
-                if attention_weights != None:
-                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
-                    attended_clicks = list(zip(his_clicks, attention_weights))
-                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
-                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
-                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
                 else:
                     his_clicks.reverse()
                     his_clicks_sorted = his_clicks[:max_his]
@@ -178,12 +204,25 @@ class MyDataset(Dataset):
                 if len(behav[0]) == 0:
                     continue
                 his_clicks = behav[0]
-                if attention_weights != None:
-                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
-                    attended_clicks = list(zip(his_clicks, attention_weights))
-                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
-                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
-                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
                 else:
                     his_clicks.reverse()
                     his_clicks_sorted = his_clicks[:max_his]
@@ -238,8 +277,31 @@ class MyDataset(Dataset):
         if prompt_type == 'topics':
             template = "Users topics: <topics> [SEP] News: <candidate_news> [SEP] covering: <candidate_topics> [SEP] Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+                his_clicks = behav[0]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
+                    his_clicks = his_clicks_sorted
+                else:
+                    his_clicks = behav[0][-max_his:]
+                    his_clicks.reverse()
+                
                 history_topics = []
                 for news in his_clicks:
                     # use keywords from title and subtitle
@@ -306,12 +368,25 @@ class MyDataset(Dataset):
                 if len(behav[0]) == 0:
                     continue
                 his_clicks = behav[0]
-                if attention_weights != None:
-                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
-                    attended_clicks = list(zip(his_clicks, attention_weights))
-                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
-                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
-                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
                 else:
                     his_clicks.reverse()
                     his_clicks_sorted = his_clicks[:max_his]
@@ -353,8 +428,31 @@ class MyDataset(Dataset):
             for impid, behav in zip(imp_ids, behaviors):
                 if len(behav[0]) == 0:
                     continue
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+                his_clicks = behav[0]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
+                    his_clicks = his_clicks_sorted
+                else:
+                    his_clicks = behav[0][-max_his:]
+                    his_clicks.reverse()
+
                 history_topics = []
                 history_sentiment = []
                 # build list of all topics in history of user
@@ -421,12 +519,25 @@ class MyDataset(Dataset):
                 if len(behav[0]) == 0:
                     continue
                 his_clicks = behav[0]
-                if attention_weights != None:
-                    attention_weights = [attention_weights_dict[user][article] for article in his_clicks]
-                    attended_clicks = list(zip(his_clicks, attention_weights))
-                    attention_sorted_clicks = sorted(attended_clicks, key=lambda x: x[1], reverse=True)
-                    his_clicks_sorted, _ = zip(*attention_sorted_clicks)
-                    his_clicks_sorted = his_clicks_sorted[:max_his]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
                 else:
                     his_clicks.reverse()
                     his_clicks_sorted = his_clicks[:max_his]
@@ -477,8 +588,31 @@ class MyDataset(Dataset):
             for impid, behav in zip(imp_ids, behaviors):
                 if len(behav[0]) == 0:
                     continue
-                his_clicks = behav[0][-max_his:]
-                his_clicks.reverse()
+                his_clicks = behav[0]
+                if attention_weights_dict != None:
+                    result = {}
+                    for cluster_id, articles in attention_weights_dict[user].items():
+                        for article_id in articles:
+                            if article_id in his_clicks:
+                                if cluster_id not in result:
+                                    result[cluster_id] = []
+                                result[cluster_id].append(article_id)
+
+                    his_clicks_sorted = []
+                    total_articles = sum(len(articles) for articles in result.values())
+                    for cluster_id, articles in result.items():
+                        cluster_proportion = len(articles) / total_articles
+                        num_to_sample = round(cluster_proportion * max_his)
+                        num_to_sample = min(num_to_sample, len(articles))
+                        his_clicks_sorted.extend(articles[-num_to_sample:])
+
+                    if len(his_clicks_sorted) > max_his:
+                        his_clicks_sorted = his_clicks_sorted[-max_his:]
+                    his_clicks = his_clicks_sorted
+                else:
+                    his_clicks = behav[0][-max_his:]
+                    his_clicks.reverse()
+
                 history_topics = []
                 for news in his_clicks:
                     # use keywords from title and subtitle
