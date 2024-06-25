@@ -9,7 +9,7 @@ DATA/user_history_selection/*
 !DATA/.gitkeep
 !DATA/full_balanced/
 !DATA/MIND-Small/
-
+!DATA/user_history_selection/
 !DATA/full_balanced/.gitkeep
 !DATA/MIND-Small/.gitkeep
 !DATA/user_history_selection/.gitkeep
