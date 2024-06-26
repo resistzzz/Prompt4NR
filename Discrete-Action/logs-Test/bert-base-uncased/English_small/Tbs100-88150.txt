@@ -1,1 +1,1 @@
-| distributed init rank 0
+| distributed init rank -1
