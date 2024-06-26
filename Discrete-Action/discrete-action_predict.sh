@@ -21,4 +21,4 @@ date=$(date '+%Y-%m-%d')
 # date=2024-06-19
 
 # Run python scripts that train model and predicts. Content of run_py3.sh
-python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
+python3 -u predict.py --prompt_type original --cluster_data_avail True --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
