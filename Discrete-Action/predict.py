@@ -213,6 +213,7 @@ if __name__ == '__main__':
     parser.add_argument('--data_path', default='../DATA/MIND-Demo', type=str, help='Path')
     parser.add_argument('--cluster_data_avail', default=False, type=str, help='if cluster info dict is available')
     parser.add_argument('--prompt_type', default='sentiment', type=str, help='custom prompt name')
+    parser.add_argument('--max_topics', default=150, type=int, help='max number of topics in prompt')
 
     parser.add_argument('--model_name', default='bert-base-uncased', type=str)
 
