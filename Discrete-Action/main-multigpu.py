@@ -183,10 +183,10 @@ def fsdp_main(rank, world_size, args):
     if rank == 0:
         if args.log:
             sys.stdout = Logger(args.log_file, sys.stdout)
-    #setup(rank, world_size)
+    setup(rank, world_size)
 
     print('| distributed init rank {}'.format(rank))
-    #dist.barrier()
+    dist.barrier()
 
     if rank == 0:
         print(args)
