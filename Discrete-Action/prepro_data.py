@@ -15,7 +15,7 @@ class MyDataset(Dataset):
         self.args = args
         self.status = status
         self.data = []
-        self.attention_weight_dict = cluster_dict
+        self.attention_weights_dict = cluster_dict
         self.imp_lens = []
         if self.status == 'train':
             self.data_path = os.path.join(args.data_path, 'train.txt')
@@ -669,7 +669,7 @@ class MyDataset(Dataset):
         data = pickle.load(open(self.data_path, 'rb'))
         imps, users, times, behaviors = self.obtain_data(data)
         if self.status == 'train':
-            self.prepro_tain(imps, behaviors, users, self.news_dict, K_samples=self.args.num_negs, max_his=self.args.max_his, attention_weights_dict=self.attention_weights_dict,
+            self.prepro_train(imps, behaviors, users, self.news_dict, K_samples=self.args.num_negs, max_his=self.args.max_his, attention_weights_dict=self.attention_weights_dict,
                             prompt_type=self.args.prompt_type, max_topics=self.args.max_topics, max_his_len=self.args.max_his_len)
         else:
             self.prepro_dev(imps, behaviors, users, self.news_dict, max_his=self.args.max_his, attention_weights_dict=self.attention_weights_dict,
