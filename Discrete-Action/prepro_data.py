@@ -105,7 +105,7 @@ class MyDataset(Dataset):
                     sentence = base_sentence.replace("<candidate_news>", neg_title)
                     self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
         if prompt_type == 'combined':
-            template = "Past news topics of user from in descending order of relevance : <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
+            template = "Past news topics of user in descending order of relevance: <user_topics> [SEP] Most common news sentiment of user: <user_sentiment> [SEP] News: <candidate_news> [SEP]  Does the user click the news? [MASK]"
             for impid, behav, user in zip(imp_ids, behaviors, users):
                 if len(behav[0]) == 0:
                     continue
@@ -275,7 +275,7 @@ class MyDataset(Dataset):
                         self.data.append({'sentence': sentence, 'target': 0, 'imp': impid})
 
         if prompt_type == 'topics':
-            template = "Users topics: <topics> [SEP] News: <candidate_news> [SEP] covering: <candidate_topics> [SEP] Does the user click the news? [MASK]"
+            template = "Past news topics of user in descending order of relevance: <topics> [SEP] News: <candidate_news> [SEP] covering: <candidate_topics> [SEP] Does the user click the news? [MASK]"
             for impid, behav in zip(imp_ids, behaviors):
                 his_clicks = behav[0]
                 if attention_weights_dict != None:
