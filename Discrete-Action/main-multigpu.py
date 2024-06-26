@@ -183,10 +183,10 @@ def fsdp_main(rank, world_size, args):
     if rank == 0:
         if args.log:
             sys.stdout = Logger(args.log_file, sys.stdout)
-    setup(rank, world_size)
+    #setup(rank, world_size)
 
     print('| distributed init rank {}'.format(rank))
-    dist.barrier()
+    #dist.barrier()
 
     if rank == 0:
         print(args)
@@ -198,8 +198,16 @@ def fsdp_main(rank, world_size, args):
 
     # load data
     news_dict = pickle.load(open(os.path.join(args.data_path, 'news.txt'), 'rb'))
-    train_dataset = MyDataset(args, tokenizer, news_dict, status='train')
-    val_dataset = MyDataset(args, tokenizer, news_dict, status='val')
+
+    if args.cluster_data_avail:
+        cluster_dict = pickle.load(open(os.path.join(args.data_path, 'user_clustered_articles_history.pickle'), 'rb'))
+        train_dataset = MyDataset(args, tokenizer, news_dict,cluster_dict, status='train')
+        val_dataset = MyDataset(args, tokenizer, news_dict,cluster_dict, status='val')
+    else:
+        train_dataset = MyDataset(args, tokenizer, news_dict, status='train')
+        val_dataset = MyDataset(args, tokenizer, news_dict, status='val')
+
+    
 
     if rank == 0:
         print('Vocabulary size of tokenizer after adding new tokens : %d' % args.vocab_size)
@@ -344,8 +352,11 @@ if __name__ == '__main__':
     t0 = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='../DATA/MIND-Small', type=str, help='Path')
+    parser.add_argument('--cluster_data_avail', default=False, type=str, help='if cluster info dict is available')
     parser.add_argument('--model_name', default='bert-base-uncased', type=str)
+    parser.add_argument('--prompt_type', default='sentiment', type=str, help='custom prompt name')
 
+    parser.add_argument('--max_topics', default=150, type=int, help='max number of topics in prompt')
     parser.add_argument('--epochs', default=5, type=int, help='training epochs')
     parser.add_argument('--batch_size', default=24, type=int, help='batch_size')
     parser.add_argument('--test_batch_size', default=200, type=int, help='test batch_size')
@@ -364,13 +375,14 @@ if __name__ == '__main__':
     parser.add_argument('--model_save', default=True, type=bool, help='save model file')
     parser.add_argument('--log', default=True, type=bool, help='whether write log file')
 
+
     # parser.add_argument('--model_save', default=False, type=bool, help='save model file')
     # parser.add_argument('--log', default=False, type=bool, help='whether write log file')
 
     args = parser.parse_args()
-
+    #remove before flight
+    fsdp_main(1,1,args)
     data_set = args.data_path.split('/')[-1]
-
     if args.model_save:
         # Location to save model per epoch
         save_dir = './model_save/' + args.model_name + '/' + data_set + '/' + datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
