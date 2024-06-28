@@ -1,11 +1,12 @@
-## Prompt4NR: Prompt Learning for News Recommendation
-Source code for SIGIR 2023 paper: Prompt Learning for News Recommendation
-
-### The Prompt4NR Framework
+## Extending Prompt4NR: Prompt Learning for News Recommendation
+Code modified to extend the existing Prompt4NR framework. For the original code base please refer refer to: https://github.com/resistzzz/Prompt4NR
 
 <p align='center'>
 <img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/Prompt4NR.png" width='800'/>
 </p>
+
+
+### The Prompt4NR Framework - Extended
 
 ### Directory Structure: 
 12 directories correspond to 12 prompt templates three types (Discrete, Continuous, Hybrid) of templates from four perspectives (Relevance, Emotion, Action, Utility)
@@ -13,26 +14,26 @@ Source code for SIGIR 2023 paper: Prompt Learning for News Recommendation
 - Continuous-Relevance, Continuous-Emotion, Continuous-Action, Continuous-Utility
 - Hybrid-Relevance, Hybrid-Emotion, Hybrid-Action, Hybrid-Utility
 
-### Details of the 12 templates are provided as follows:
+In our extensions we only focus on the Discrete-Action template type.
 
-<img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/templates_table.png" />
+The experiments are based on the <a href="https://recsys.eb.dk/dataset/">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/">RecSys Challenge 2024</a>.
 
-### Dataset
-
-The experiments are based on public dataset <a href="https://msnews.github.io/">MIND</a>, we use the small version MIND-Small.
-
-For our paper, we have preprocessed the original dataset and store it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though I use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
+For our paper, we have preprocessed the original dataset to a large (~150k) and a large (~150k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though I use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
 
 - train.txt: training set
 - val.txt: validation set
 - test.txt: testing set
 - news.txt: containing information of all news
 
-I have shared our preprocessed dataset on Google Drive as follows: 
+We have shared our preprocessed dataset on Google Drive as follows: 
 
-<https://drive.google.com/drive/folders/1_3ffZvEPKD5deHbTU_mVGp6uEaLhyM7c?usp=sharing>
+<a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing">Large (~150k)</a>
+<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing">Small (~12k)
 
 ### How to Run These codes
+Since thise code utilizes multi-GPU we have wrote two scripts that make it possible to run it on a computer that supports
+multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html">Snellius</a>
+
 In each directory, there is a script called ``run.sh`` that can run the codes for the corresponding template.
 Take “Discrete-Relevance” template as an example, the ``run.sh`` file is shown as follows:
 ```
@@ -42,16 +43,12 @@ python predict.py --data_path ../DATA/MIND-Small --test_batch_size 100 --max_tok
 - The first line is used to train the model on the training set and evaluate it on the validation set at each epoch. During this process, the model with the best performance on the validation set will be stored.
 - The second line is used to evaluate the "best" model on the testing set to obtain the performance evaluation.
 
-We implement the source code via the <a href="https://pytorch.org/tutorials/beginner/ddp_series_intro.html">Distributed Data Parallel (DDP)</a> technology provided by pytorch. Hence, our codes is a Multi-GPUs version. We encourage you to overwrite our code to obtain a Single-GPU version.
 
 ### Enviroments
-- python==3.7
-- pytorch==1.13.0
-- cuda==116
-- transformers==4.27.0
+To easily create an environment that supports running this code we have created a .yml file  in recsys_gpu.yml.
 
 ### Citation
-If you use this codes, please cite our paper!
+If you use this codes, please cite the original paper!
 ```
 @inproceedings{zhang2023prompt,
     author = {Zhang, Zizhuo and Wang, Bang},
