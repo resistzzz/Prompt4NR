@@ -30,7 +30,10 @@ For our paper, we have preprocessed the original dataset to a large (~150k) and 
 - test.txt: testing set
 - news.txt: containing information of all news
 
-The only file containing natural language sentences is news.txt, to run the experiments for English data therefor replace this file with the English variant while the rest remains the same. 
+The only file containing natural language sentences is news.txt.
+
+> [!TIP]
+> To run the experiments for English data therefor replace this file with the English variant while the rest remains the same. 
 
 By default we placed these datasets at the location ```DATA/English_small```, but this folder name can be anything as long as it matches the directory path variable set in the .job or .sh files (explanation will become apparent in the **How to Run These codes** section below). 
 
