@@ -26,15 +26,15 @@ The experiments are based on the <a href="https://recsys.eb.dk/dataset/" target=
 
 For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener noreferrer">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
 
-- train.txt: training set
-- val.txt: validation set
-- test.txt: testing set
-- news.txt: containing information of all news
+- ```train.txt```: training set
+- ```val.txt```: validation set
+- ```test.txt```: testing set
+- ```news.txt```: containing information of all news
 
-The only file containing natural language sentences is news.txt.
+The only file containing natural language sentences is ```news.txt```.
 
 > [!TIP]
-> To run the experiments for English data therefor replace this file with the English variant while the rest remains the same. 
+> To run the experiments for English data therefor replace ```news.txt``` with the English variant while the rest remains the same. 
 
 By default we placed these datasets at the location ```DATA/English_small```, but this folder name can be anything as long as it matches the directory path variable set in the .job or .sh files (explanation will become apparent in the **How to Run These codes** section below). 
 
