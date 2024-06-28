@@ -45,7 +45,10 @@ python predict.py --data_path ../DATA/MIND-Small --test_batch_size 100 --max_tok
 
 
 ### Enviroments
-To easily create an environment that supports running this code we have created a .yml file  in recsys_gpu.yml.
+To easily create an environment that supports running this code we have created a .yml file in ```recsys_gpu.yml```.
+
+* General machine: install using e.g. using conda ```conda env create -f recsys_gpu.yml```
+* Snellus: job file that creates your environment for you is called ```batch_jobs/setup-env.job```. Push it to the batch node. 
 
 ### Citation
 If you use this codes, please cite the original paper!
