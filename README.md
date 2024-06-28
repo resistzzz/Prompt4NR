@@ -28,8 +28,8 @@ For our paper, we have preprocessed the original dataset to a large (~150k) and 
 
 We have shared our preprocessed dataset on Google Drive as follows: 
 
-<a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
-<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
+* <a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
+* <a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
 
 ### How to Run These codes
 Since thise code utilizes multi-GPU we have wrote two scripts that make it possible to run it on a computer that supports
