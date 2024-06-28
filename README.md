@@ -18,7 +18,7 @@ In our extensions we only focus on the Discrete-Action template type.
 
 The experiments are based on the <a href="https://recsys.eb.dk/dataset/">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/">RecSys Challenge 2024</a>.
 
-For our paper, we have preprocessed the original dataset to a large (~150k) and a large (~150k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though I use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
+For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
 
 - train.txt: training set
 - val.txt: validation set
@@ -28,17 +28,22 @@ For our paper, we have preprocessed the original dataset to a large (~150k) and 
 We have shared our preprocessed dataset on Google Drive as follows: 
 
 <a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing">Large (~150k)</a>
-<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing">Small (~12k)
+<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing">Small (~12k)</a>
 
 ### How to Run These codes
 Since thise code utilizes multi-GPU we have wrote two scripts that make it possible to run it on a computer that supports
 multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html">Snellius</a>
 
-In each directory, there is a script called ``run.sh`` that can run the codes for the corresponding template.
-Take “Discrete-Relevance” template as an example, the ``run.sh`` file is shown as follows:
+* **General machine:** the bash script that runs the code to train and predict is located at ```Discrete-Action/discrete-action_train_predict.sh```. Go this its directory and execute this script ```./discrete-action_train_predict.sh```.
+
+* **Snellius:** the job file the runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
+
+In all files the line to run the scripts contains flags to for the experiments settings (such as hyperparameters) but also which prompt-template to experiment with.
+arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. 
+An example is as follows:
 ```
-python main-multigpu.py --data_path ../DATA/MIND-Small --epochs 4 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --model_save True
-python predict.py --data_path ../DATA/MIND-Small --test_batch_size 100 --max_tokens 500 --model_file ./temp/BestModel.pt --log True
+python3 -u main-multigpu.py --cluster_data_avail True --prompt_type original --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
+python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
 ```
 - The first line is used to train the model on the training set and evaluate it on the validation set at each epoch. During this process, the model with the best performance on the validation set will be stored.
 - The second line is used to evaluate the "best" model on the testing set to obtain the performance evaluation.
