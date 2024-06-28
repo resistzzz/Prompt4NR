@@ -47,9 +47,9 @@ multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have cre
 
 * **Snellius:** the job file that runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
 
-In all files the line to run the script contains flags to for the experiments settings (such as hyperparameters) but also which prompt template to experiment with. Arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
+In all files the lines to run the scripts contain flags to for the experiments settings (such as hyperparameters) but also which prompt template to experiment with. Arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
 
-An example is as follows:
+An example in the ```Discrete-Action/discrete-action_train_predict.sh``` is as follows:
 ```
 python3 -u main-multigpu.py --cluster_data_avail True --prompt_type original --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
 python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
