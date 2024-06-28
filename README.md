@@ -59,7 +59,7 @@ multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have cre
 
 * **Snellius:** the job file that runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
 
-In all files the lines to run the scripts contain flags for the experiment settings (such as hyperparameters) but also which experiment to run (e.g. an extended prompt template). Arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
+In all files the lines to run the scripts contain flags for the experiment settings (such as hyperparameters) but also which experiment to run (e.g. an extended prompt template). Arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names such as the location the get the data from e.g. ```DATA/English_small```. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
 
 An example in the ```Discrete-Action/discrete-action_train_predict.sh``` is as follows:
 ```
