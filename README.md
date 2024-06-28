@@ -41,7 +41,7 @@ To perform the data clustering a dataset has been constructed with the users the
 
 ### How to Run These codes
 Since this code utilizes multi-GPU we have written two scripts that make it possible to run it on a computer that supports
-multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
+multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
 
 * **General machine:** the bash script that runs the code to train and predict is located at ```Discrete-Action/discrete-action_train_predict.sh```. Go this its directory and execute this script ```./discrete-action_train_predict.sh```.
 
