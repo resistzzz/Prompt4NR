@@ -17,6 +17,7 @@ Code modified to extend the existing Prompt4NR framework. For the original code 
 
 In our extensions we only focus on the Discrete-Action prompt template type.
 
+## Datasets - general
 The experiments are based on the <a href="https://recsys.eb.dk/dataset/" target="_blank" rel="noopener noreferrer">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/" target="_blank" rel="noopener noreferrer">RecSys Challenge 2024</a>.
 
 For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener noreferrer">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
@@ -26,10 +27,19 @@ For our paper, we have preprocessed the original dataset to a large (~150k) and 
 - test.txt: testing set
 - news.txt: containing information of all news
 
+The only file containing natural language sentences is news.txt, to run the experiments for English data therefor replace this file with the English variant while the rest remains the same. 
+
+By default we placed these datasets at the location ```DATA/full_balanced```. 
+
 We have shared our preprocessed dataset on Google Drive as follows: 
 
 * <a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
 * <a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
+
+
+
+## Datasets - clustering
+To perform the data clustering a dataset has been generated with features provided in the correct datastructure. This dataset can be found here: <a href="https://drive.google.com/file/d/1iiO71WqTiiaIyA6UE6q0351fM_TYb9Bs/view?usp=sharing">final_cluster_data.txt</a>.
 
 ### How to Run These codes
 Since this code utilizes multi-GPU we have written two scripts that make it possible to run it on a computer that supports
@@ -40,7 +50,8 @@ multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have cre
 * **Snellius:** the job file that runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
 
 In all files the line to run the script contains flags to for the experiments settings (such as hyperparameters) but also which prompt-template to experiment with.
-arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. Other flags' arguments can be set as desired.
+arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
+
 An example is as follows:
 ```
 python3 -u main-multigpu.py --cluster_data_avail True --prompt_type original --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
@@ -53,8 +64,8 @@ python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --m
 ### Enviroments
 To easily create an environment that supports running this code we have created a .yml file in ```recsys_gpu.yml```.
 
-* General machine: install using e.g. using conda ```conda env create -f recsys_gpu.yml```
-* Snellus: job file that creates your environment for you is called ```batch_jobs/setup-env.job```. Push it to the batch node. 
+* **General machine:** install using e.g. using conda ```conda env create -f recsys_gpu.yml```
+* **Snellus: job file** that creates your environment for you is called ```batch_jobs/setup-env.job```. Go to its directory and push it to the batch node ```sbatch setup-env.job```. 
 
 ### Citation
 If you use this codes, please cite the original paper!
