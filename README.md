@@ -38,6 +38,7 @@ The only file containing natural language sentences is ```news.txt```.
 
 By default we placed these datasets at the location ```DATA/English_small```, but this folder name can be anything as long as it matches the directory path variable set in the .job or .sh files (explanation will become apparent in the **How to Run These codes** later on). 
 
+The specifications of the dataset generation can be found in the notebook ```dataset_configuration/data.ipynb```.
 We have shared our preprocessed dataset on Google Drive as follows: 
 
 * <a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
