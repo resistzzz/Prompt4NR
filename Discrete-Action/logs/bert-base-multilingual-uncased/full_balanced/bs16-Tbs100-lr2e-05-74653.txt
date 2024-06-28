@@ -1,0 +1,42 @@
+| distributed init rank 0
+Namespace(data_path='/scratch-local/scur1608.6628130/full_balanced', model_name='bert-base-multilingual-uncased', epochs=3, batch_size=16, test_batch_size=100, lr=2e-05, wd=0.001, max_his=50, max_tokens=500, num_negs=4, max_his_len=450, device='cuda', world_size=4, model_save=True, log=True, save_dir='./model_save/bert-base-multilingual-uncased/full_balanced/2024-06-13-15-08-57', save_dir_bm='./temp/bert-base-multilingual-uncased/full_balanced/2024-06-13', log_file='./logs/bert-base-multilingual-uncased/full_balanced/bs16-Tbs100-lr2e-05-74653.txt', rank=0, gpu=0)
+2) data_path known in process at rank 0 = /scratch-local/scur1608.6628130/full_balanced
+3) Init MyDataset with data_path = /scratch-local/scur1608.6628130/full_balanced/train.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6628130/full_balanced/train.txt
+3) Init MyDataset with data_path = /scratch-local/scur1608.6628130/full_balanced/val.txt
+4) Trying to load data in load_data from path = /scratch-local/scur1608.6628130/full_balanced/val.txt
+Vocabulary size of tokenizer after adding new tokens : 105880
+num train: 60310	num val: 152836
+Bruger: [nsep] wagnerchef afviser russiske meldinger om fremgang [nsep] aab anstter hiljemark som cheftrner [nsep] voldsom succes hun fr to orgasmer p tre sider [nsep] trt af spioner for mange udnytter det [nsep] jeg kunne ikke vre mere ligeglad [nsep] rosen vlter ned over rune det glemmer han aldrig [nsep] medier nadal trkker sig fra french open [nsep] sdan er emilie mengsigtets fngselsliv [nsep] live city viser verdensklasse real madrid er helt i [nsep] konomisk straf til dansk influencer [nsep] ny fnrapport kan fre til store fald i forurening [nsep] bortfrt pige fundet efter seks r genkendt i netflixserie [nsep] smitten hrger i giroen et kmpe chok [nsep] jeg har aldrig vret ude for noget lignende [nsep] prins harry og hertuginde meghan jagtet af pressefotograf [nsep] prins harry og hertuginde meghan jagtet af pressefotograf [nsep] prins harry og hertuginde meghan jagtet af pressefotograf [nsep] holger rune leverer helt vild prstation [nsep] populrt tvprogram med stor ndring [nsep] martin rossen frdig i danfoss [nsep] live kmpe jubelbrl rune strler i afgrende st [nsep] live kmpe jubelbrl rune strler i afgrende st [nsep] sidste skoledag afblst tegnestifter fundet i karameller [nsep] domstol afgr skal betale den danske stat 125 milliarder dollars [nsep] hemmelig agent vi talte meget om vold [nsep] live kmpe jubelbrl rune strler i afgrende st [nsep] voldsomt uvejr tvoptagelser ndret [nsep] storbank renten falder i tredje kvartal [nsep] live kmpe jubelbrl rune strler i afgrende st [nsep] ekstremt vejr aflyser f1grandprix [nsep] ddsliste forarger syv elever bortvist [nsep] k til verdens drligste film undskyld [nsep] hun skal i glasburet mod verdens bedste jeg har [nsep] voldsomt uvejr truer formel 1lb [nsep] kvalt og krt i vandet 25rig erkender [SEP] Nyheder: Price afviser fyring  Det er bare sdan det er [SEP] Klikker brugeren på nyhederne? [MASK]
+Bruger: [nsep] forgldet og falleret martin skrider fra det hele [nsep] vild hyre vlter sig i millioner [nsep] republikaneren ron desantis opstiller til prsidentvalget i usa [nsep] stjerner i sorg hylder tina turner [nsep] gennemsigtig kjole p den rde lber derfor gr hun det [nsep] trump sagsgt nu slr hun til igen [nsep] usa ukraine stod sandsynligvis bag orkestreret kremlangreb [nsep] afslrer s mange plastikoperationer har jeg fet [nsep] afslrer s mange plastikoperationer har jeg fet [nsep] et r efter skoleskyderi her kbte gerningsmand sine vben [nsep] 25rig idmt seks rs fngsel [nsep] sverige protesterer over dansk kmpeplan [nsep] nervs tessa det var voldtgt [nsep] russisk leder i kina vores forhold har aldrig vret bedre [nsep] benhrde bachelorpiger drop det [nsep] efterretninger rusland straffer desertrer [nsep] svigerfar fra helvede [nsep] lnker sig til fly vanvid [nsep] dansk sangerinde er gravid [nsep] snapchatrobot guider brn til selvskade [nsep] mand i kassevogn ville angiveligt drbe biden og tage magten [nsep] politi elev startede ddsbrand i guyana efter konfiskering af mobil [nsep] mand i kassevogn ville angiveligt drbe biden og tage magten [nsep] nye schumacheranklager har et problem med navnet [nsep] belarusisk blogger er bendet kort efter otterig fngselsdom [nsep] efter indsamling russer bliver i dansk klub [nsep] camilla martin raser over hadbeskeder det er usmageligt [nsep] camilla martin raser over hadbeskeder det er usmageligt [nsep] kmpe byttehandel nu er de strst [nsep] melder afbud til dansk festival skal opereres [nsep] blodbladet fortstter meta vil fyre tusinder [nsep] gtepar skylder syv millioner betaler ikke [nsep] verdens bedste kur christina spiste sig til vgttab [nsep] gasprisen falder til laveste niveau i nsten to r [nsep] adidas stter restlager fra yeezykollektion til salg [nsep] abbastjernes stalker cho [SEP] Nyheder: Arrestordre p stjerne Betaler ikke brnebidrag [SEP] Klikker brugeren på nyhederne? [MASK]
+--------------------------------------------------------------------
+start training:  2024-06-13 15:12:14.035704
+Epoch:  0
+lr: 2e-05
+Train Loss: 0.5146
+Train ACC: 0.7980	ACC-Positive: 0.0046	PositiveRatio: 0.2000	[0.16]
+save file ./model_save/bert-base-multilingual-uncased/full_balanced/2024-06-13-15-08-57/Epoch-0.pt
+Validate: AUC: 0.5297	MRR: 0.3259	nDCG@5: 0.3599	nDCG@10: 0.4423	[Val-Time: 0.13]
+Best Result: AUC: 0.5297 	MRR: 0.3259 	NDCG@5: 0.3599 	 NDCG@10: 0.4423
+Best Epoch: AUC: 0 	MRR: 0 	NDCG@5: 0 	 NDCG@10: 0
+--------------------------------------------------------------------
+start training:  2024-06-13 15:29:16.039356
+Epoch:  1
+lr: 2e-05
+Train Loss: 0.4899
+Train ACC: 0.7996	ACC-Positive: 0.0045	PositiveRatio: 0.2000	[0.16]
+save file ./model_save/bert-base-multilingual-uncased/full_balanced/2024-06-13-15-08-57/Epoch-1.pt
+Validate: AUC: 0.5481	MRR: 0.3407	nDCG@5: 0.3780	nDCG@10: 0.4568	[Val-Time: 0.13]
+Best Result: AUC: 0.5481 	MRR: 0.3407 	NDCG@5: 0.3780 	 NDCG@10: 0.4568
+Best Epoch: AUC: 1 	MRR: 1 	NDCG@5: 1 	 NDCG@10: 1
+--------------------------------------------------------------------
+start training:  2024-06-13 15:46:18.450763
+Epoch:  2
+lr: 2e-05
+Train Loss: 0.4811
+Train ACC: 0.7995	ACC-Positive: 0.0051	PositiveRatio: 0.2000	[0.16]
+save file ./model_save/bert-base-multilingual-uncased/full_balanced/2024-06-13-15-08-57/Epoch-2.pt
+Validate: AUC: 0.5555	MRR: 0.3407	nDCG@5: 0.3785	nDCG@10: 0.4585	[Val-Time: 0.13]
+Best Result: AUC: 0.5555 	MRR: 0.3407 	NDCG@5: 0.3785 	 NDCG@10: 0.4585
+Best Epoch: AUC: 2 	MRR: 2 	NDCG@5: 2 	 NDCG@10: 2
+Copy ./model_save/bert-base-multilingual-uncased/full_balanced/2024-06-13-15-08-57/Epoch-2.pt >>> ./temp/bert-base-multilingual-uncased/full_balanced/2024-06-13/BestModel.pt

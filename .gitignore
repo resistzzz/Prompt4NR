@@ -1,0 +1,22 @@
+# exclude all datasets to prevent submitting too large datasets
+DATA/*
+DATA/ebnerd/*
+#DATA/full_balanced/*
+DATA/MIND-Small/*
+DATA/user_history_selection/*
+DATA/English_small/*
+
+# exception to the rule
+!DATA/.gitkeep
+!DATA/full_balanced/
+!DATA/MIND-Small/
+!DATA/user_history_selection/
+!DATA/full_balanced/.gitkeep
+!DATA/MIND-Small/.gitkeep
+!DATA/user_history_selection/.gitkeep
+!DATA/English_small/
+!DATA/English_small/.gitkeep
+
+# exclude saved models
+Discrete-Action/model_save/*
+Discrete-Action/temp/*

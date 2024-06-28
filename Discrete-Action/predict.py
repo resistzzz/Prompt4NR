@@ -139,7 +139,11 @@ def ddp_main(rank, world_size, args):
 
     # load data
     news_dict = pickle.load(open(os.path.join(args.data_path, 'news.txt'), 'rb'))
-    test_dataset = MyDataset(args, tokenizer, news_dict, status='test')
+    if args.cluster_data_avail:
+        cluster_dict = pickle.load(open(os.path.join(args.data_path, 'user_clustered_articles_history.pickle'), 'rb'))
+        test_dataset = MyDataset(args, tokenizer, news_dict,cluster_dict, status='test')
+    else:
+        test_dataset = MyDataset(args, tokenizer, news_dict, status='test')
 
     if rank == 0:
         print(args)
@@ -207,6 +211,10 @@ if __name__ == '__main__':
     t0 = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='../DATA/MIND-Demo', type=str, help='Path')
+    parser.add_argument('--cluster_data_avail', default=False, type=str, help='if cluster info dict is available')
+    parser.add_argument('--prompt_type', default='sentiment', type=str, help='custom prompt name')
+    parser.add_argument('--max_topics', default=150, type=int, help='max number of topics in prompt')
+
     parser.add_argument('--model_name', default='bert-base-uncased', type=str)
 
     parser.add_argument('--test_batch_size', default=15, type=int, help='test batch_size')
@@ -224,18 +232,14 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.data_path == '../DATA/MIND-Demo':
-        if args.log:
-            if not os.path.exists('./log-Test'):
-                os.makedirs('./log-Test')
-            log_file = './log-Test/' + 'Tbs' + str(args.test_batch_size) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
-    else:
-        if args.log:
-            if not os.path.exists('./log-Test-Small'):
-                os.makedirs('./log-Test-Small')
-            log_file = './log-Test-Small/' + 'Tbs' + str(args.test_batch_size) + '-' + str(datetime.now())[-5:]+'.txt'
-            args.log_file = log_file
+    data_set = args.data_path.split('/')[-1]
+
+    if args.log:
+        log_dir = './logs-Test/' + args.model_name + '/' + data_set
+        if not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+        log_file = log_dir + '/' + 'Tbs' + str(args.test_batch_size) + '-' + str(datetime.now())[-5:]+'.txt'
+        args.log_file = log_file
 
     WORLD_SIZE = torch.cuda.device_count()
     mp.spawn(ddp_main,
@@ -244,4 +248,4 @@ if __name__ == '__main__':
              join=True)
     t1 = time.time()
     run_time = (t1 - t0) / 3600
-    print('Running time: %0.4f' % run_time)
+    print('Running time PREDICT hours: %0.4f' % run_time)
