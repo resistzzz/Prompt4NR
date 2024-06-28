@@ -1,5 +1,6 @@
 ## Extending Prompt4NR: Prompt Learning for News Recommendation
-Code modified to extend the existing Prompt4NR framework. For the original code base please refer refer to: https://github.com/resistzzz/Prompt4NR
+Code modified to extend the existing Prompt4NR framework. For the original code base please refer refer to: 
+<a href="https://github.com/resistzzz/Prompt4NR" target="_blank" rel="noopener noreferrer">https://github.com/resistzzz/Prompt4NR</a>
 
 <p align='center'>
 <img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/Prompt4NR.png" width='800'/>
@@ -14,11 +15,11 @@ Code modified to extend the existing Prompt4NR framework. For the original code 
 - Continuous-Relevance, Continuous-Emotion, Continuous-Action, Continuous-Utility
 - Hybrid-Relevance, Hybrid-Emotion, Hybrid-Action, Hybrid-Utility
 
-In our extensions we only focus on the Discrete-Action template type.
+In our extensions we only focus on the Discrete-Action prompt template type.
 
-The experiments are based on the <a href="https://recsys.eb.dk/dataset/">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/">RecSys Challenge 2024</a>.
+The experiments are based on the <a href="https://recsys.eb.dk/dataset/" target="_blank" rel="noopener noreferrer">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/" target="_blank" rel="noopener noreferrer">RecSys Challenge 2024</a>.
 
-For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
+For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener noreferrer">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
 
 - train.txt: training set
 - val.txt: validation set
@@ -27,12 +28,12 @@ For our paper, we have preprocessed the original dataset to a large (~150k) and 
 
 We have shared our preprocessed dataset on Google Drive as follows: 
 
-<a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing">Large (~150k)</a>
-<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing">Small (~12k)</a>
+<a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
+<a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
 
 ### How to Run These codes
 Since thise code utilizes multi-GPU we have wrote two scripts that make it possible to run it on a computer that supports
-multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html">Snellius</a>
+multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
 
 * **General machine:** the bash script that runs the code to train and predict is located at ```Discrete-Action/discrete-action_train_predict.sh```. Go this its directory and execute this script ```./discrete-action_train_predict.sh```.
 
