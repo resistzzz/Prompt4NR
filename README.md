@@ -1,11 +1,16 @@
-## Prompt4NR: Prompt Learning for News Recommendation
-Source code for SIGIR 2023 paper: Prompt Learning for News Recommendation
+## *Extending* Prompt4NR: Prompt Learning for News Recommendation
+> [!NOTE]
+> Code modified to *extend* the existing Prompt4NR framework. For the original code base please refer to: 
+<a href="https://github.com/resistzzz/Prompt4NR" target="_blank" rel="noopener noreferrer">https://github.com/resistzzz/Prompt4NR</a>
 
-### The Prompt4NR Framework
+
 
 <p align='center'>
 <img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/Prompt4NR.png" width='800'/>
 </p>
+
+
+### The Prompt4NR Framework - *Extended*
 
 ### Directory Structure: 
 12 directories correspond to 12 prompt templates three types (Discrete, Continuous, Hybrid) of templates from four perspectives (Relevance, Emotion, Action, Utility)
@@ -13,45 +18,70 @@ Source code for SIGIR 2023 paper: Prompt Learning for News Recommendation
 - Continuous-Relevance, Continuous-Emotion, Continuous-Action, Continuous-Utility
 - Hybrid-Relevance, Hybrid-Emotion, Hybrid-Action, Hybrid-Utility
 
-### Details of the 12 templates are provided as follows:
+In our extensions we only focus on the Discrete-Action prompt template type. Folder containing this functionality is therefor 
+> ```Discrete-Action/```
 
-<img src="https://github.com/resistzzz/Prompt4NR/blob/main/Imgs/templates_table.png" />
+## Datasets - general
+The experiments are based on the <a href="https://recsys.eb.dk/dataset/" target="_blank" rel="noopener noreferrer">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/" target="_blank" rel="noopener noreferrer">RecSys Challenge 2024</a>.
 
-### Dataset
+For our paper, we have preprocessed the original dataset to a large (~150k) and a small (~12k) subset and stored it as binary files via <a href="https://docs.python.org/3/library/pickle.html" target="_blank" rel="noopener noreferrer">"pickle"</a>. Even though we use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
 
-The experiments are based on public dataset <a href="https://msnews.github.io/">MIND</a>, we use the small version MIND-Small.
+- ```train.txt```: training set
+- ```val.txt```: validation set
+- ```test.txt```: testing set
+- ```news.txt```: containing information of all news
 
-For our paper, we have preprocessed the original dataset and store it as binary files via <a href="https://docs.python.org/3/library/pickle.html">"pickle"</a>. Even though I use ".txt" as the file extension, they are still binary files stored by pickle, you can use pickle package to directly load them, which include:
+The only file containing natural language sentences is ```news.txt```.
 
-- train.txt: training set
-- val.txt: validation set
-- test.txt: testing set
-- news.txt: containing information of all news
+> [!TIP]
+> To run the experiments for English data therefor replace ```news.txt``` with the English variant while the rest remains the same. 
 
-I have shared our preprocessed dataset on Google Drive as follows: 
+By default we placed these datasets at the location ```DATA/English_small```, but this folder name can be anything as long as it matches the directory path variable set in the .job or .sh files (explanation will become apparent in the **How to Run These codes** later on). 
 
-<https://drive.google.com/drive/folders/1_3ffZvEPKD5deHbTU_mVGp6uEaLhyM7c?usp=sharing>
+The specifications of the dataset generation can be found in the notebook ```dataset_configuration/data.ipynb```.
+
+We have shared our preprocessed dataset on Google Drive as follows: 
+
+* <a href="https://drive.google.com/drive/folders/1QTA_LylrtF3RnOgO9JDUIKkLZG33FBAR?usp=sharing" target="_blank" rel="noopener noreferrer">Large (~150k)</a>
+* <a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
+
+## Datasets - clustering
+To perform the data clustering a dataset has been constructed with the users their history the per article features in the correct datastructure (for specifications see the notebook ```history_selection/clustering.ipynb```). With this dataset it is possible to perform the clustering yourself with the notebook called ```history_selection/clustering.ipynb```. This dataset can be found here: <a href="https://drive.google.com/file/d/1iiO71WqTiiaIyA6UE6q0351fM_TYb9Bs/view?usp=sharing">final_cluster_data.txt</a> and should be placed in the framework as follows ```DATA/user_history_selection/final_cluster_data.txt```, after which you can run the clustering algorithm.
+
+However, to save you computation time the resulting clustered users' history are also provided such that you don't have to perform the clustering yourself and can just run the Prompt4NR framework. The clustered users' history can be found at <a href="https://drive.google.com/file/d/1FfyuF5qfj85PUleSNYM_SHKLSgl_iZyy/view?usp=sharing">user_clustered_articles_history.pickle</a>. And should be placed as follows for Prompt4NR to be able to run:  ```DATA/user_history_selection/user_clustered_articles_history.pickle```.
 
 ### How to Run These codes
-In each directory, there is a script called ``run.sh`` that can run the codes for the corresponding template.
-Take “Discrete-Relevance” template as an example, the ``run.sh`` file is shown as follows:
+> [!IMPORTANT]
+> Guidelines based on Linux OS.
+
+Since this code utilizes multi-GPU we have written two scripts that make it possible to run it on a computer that supports
+multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
+
+* **General machine:** the bash script that runs the code to train and predict is located at ```Discrete-Action/discrete-action_train_predict.sh```. Go this its directory and execute this script ```./discrete-action_train_predict.sh```.
+
+* **Snellius:** the job file that runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
+
+In all files the lines to run the scripts contain flags for the experiment settings (such as hyperparameters) but also which experiment to run (e.g. an extended prompt template). Arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names such as the location the get the data from e.g. ```DATA/English_small```. They do however have to be correctly initialized with the desired values (specifications in the .sh and .job files themselves). Other flags' arguments can be set as desired.
+
+An example in the ```Discrete-Action/discrete-action_train_predict.sh``` is as follows:
 ```
-python main-multigpu.py --data_path ../DATA/MIND-Small --epochs 4 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --model_save True
-python predict.py --data_path ../DATA/MIND-Small --test_batch_size 100 --max_tokens 500 --model_file ./temp/BestModel.pt --log True
+python3 -u main-multigpu.py --cluster_data_avail True --prompt_type original --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
+python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --test_batch_size 100 --max_tokens 500 --model_file ./temp/$MODEL_NAME$DATA_SET/$date/BestModel.pt --log True --world_size 4
 ```
 - The first line is used to train the model on the training set and evaluate it on the validation set at each epoch. During this process, the model with the best performance on the validation set will be stored.
 - The second line is used to evaluate the "best" model on the testing set to obtain the performance evaluation.
 
-We implement the source code via the <a href="https://pytorch.org/tutorials/beginner/ddp_series_intro.html">Distributed Data Parallel (DDP)</a> technology provided by pytorch. Hence, our codes is a Multi-GPUs version. We encourage you to overwrite our code to obtain a Single-GPU version.
 
-### Enviroments
-- python==3.7
-- pytorch==1.13.0
-- cuda==116
-- transformers==4.27.0
+### Environments
+To easily create an environment that supports running this code we have created a .yml file in ```recsys_gpu.yml```.
 
+* **General machine:** install using e.g. using conda ```conda env create -f recsys_gpu.yml```
+* **Snellus: job file** that creates your environment for you is called ```batch_jobs/setup-env.job```. Go to its directory and push it to the batch node ```sbatch setup-env.job```. 
+
+### Dataset translation
+For dataset translation only the news.txt file has to be imported and features to be translated can be extracted and replaced with the function present in ```translation.ipynb```.
 ### Citation
-If you use this codes, please cite our paper!
+If you use this codes, please cite the original paper!
 ```
 @inproceedings{zhang2023prompt,
     author = {Zhang, Zizhuo and Wang, Bang},

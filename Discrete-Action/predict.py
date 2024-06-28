@@ -139,7 +139,11 @@ def ddp_main(rank, world_size, args):
 
     # load data
     news_dict = pickle.load(open(os.path.join(args.data_path, 'news.txt'), 'rb'))
-    test_dataset = MyDataset(args, tokenizer, news_dict, status='test')
+    if args.cluster_data_avail:
+        cluster_dict = pickle.load(open(os.path.join(args.data_path, 'user_clustered_articles_history.pickle'), 'rb'))
+        test_dataset = MyDataset(args, tokenizer, news_dict,cluster_dict, status='test')
+    else:
+        test_dataset = MyDataset(args, tokenizer, news_dict, status='test')
 
     if rank == 0:
         print(args)
@@ -207,6 +211,10 @@ if __name__ == '__main__':
     t0 = time.time()
     parser = argparse.ArgumentParser()
     parser.add_argument('--data_path', default='../DATA/MIND-Demo', type=str, help='Path')
+    parser.add_argument('--cluster_data_avail', default=False, type=str, help='if cluster info dict is available')
+    parser.add_argument('--prompt_type', default='sentiment', type=str, help='custom prompt name')
+    parser.add_argument('--max_topics', default=150, type=int, help='max number of topics in prompt')
+
     parser.add_argument('--model_name', default='bert-base-uncased', type=str)
 
     parser.add_argument('--test_batch_size', default=15, type=int, help='test batch_size')
