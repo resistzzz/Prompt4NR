@@ -1,4 +1,4 @@
-## Extending Prompt4NR: Prompt Learning for News Recommendation
+## *Extending* Prompt4NR: Prompt Learning for News Recommendation
 Code modified to *extend* the existing Prompt4NR framework. For the original code base please refer refer to: 
 <a href="https://github.com/resistzzz/Prompt4NR" target="_blank" rel="noopener noreferrer">https://github.com/resistzzz/Prompt4NR</a>
 
