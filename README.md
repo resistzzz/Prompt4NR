@@ -71,12 +71,14 @@ python3 -u predict.py --cluster_data_avail True --data_path $TMPDIR$DATA_SET --m
 - The second line is used to evaluate the "best" model on the testing set to obtain the performance evaluation.
 
 
-### Enviroments
+### Environments
 To easily create an environment that supports running this code we have created a .yml file in ```recsys_gpu.yml```.
 
 * **General machine:** install using e.g. using conda ```conda env create -f recsys_gpu.yml```
 * **Snellus: job file** that creates your environment for you is called ```batch_jobs/setup-env.job```. Go to its directory and push it to the batch node ```sbatch setup-env.job```. 
 
+### Dataset translation
+For dataset translation only the news.txt file has to be imported and features to be translated can be extracted and replaced with the function present in ```translation.ipynb```.
 ### Citation
 If you use this codes, please cite the original paper!
 ```
