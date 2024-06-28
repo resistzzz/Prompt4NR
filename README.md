@@ -19,7 +19,7 @@
 - Hybrid-Relevance, Hybrid-Emotion, Hybrid-Action, Hybrid-Utility
 
 In our extensions we only focus on the Discrete-Action prompt template type. Folder containing this functionality is therefor 
-> ```Discrete-Action/```.
+> ```Discrete-Action/```
 
 ## Datasets - general
 The experiments are based on the <a href="https://recsys.eb.dk/dataset/" target="_blank" rel="noopener noreferrer">EBNeRD dataset</a> of the <a href="https://www.recsyschallenge.com/2024/" target="_blank" rel="noopener noreferrer">RecSys Challenge 2024</a>.
