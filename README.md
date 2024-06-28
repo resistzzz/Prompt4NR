@@ -40,6 +40,9 @@ We have shared our preprocessed dataset on Google Drive as follows:
 To perform the data clustering a dataset has been constructed with the users their history the per article features in the correct datastructure (for specifications see the notebook ```history_selection/clustering.ipynb```). This dataset can be found here: <a href="https://drive.google.com/file/d/1iiO71WqTiiaIyA6UE6q0351fM_TYb9Bs/view?usp=sharing">final_cluster_data.txt</a> and should be placed in the framework as follows ```DATA/user_history_selection/final_cluster_data.txt```. With this dataset it is possible to perform the clustering yourself with the notebook called ```history_selection/clustering.ipynb```. However, to save you computation time the resulting clustered users' history are also provided such that you don't have to perform the clustering yourself and can just run the Prompt4NR framework. The clustered users' history can be found at <a href="https://drive.google.com/file/d/1FfyuF5qfj85PUleSNYM_SHKLSgl_iZyy/view?usp=sharing">```user_clustered_articles_history.pickle```</a>. And should be placed as follows for Prompt4NR to be able to run:  ```DATA/user_history_selection/user_clustered_articles_history.pickle```.
 
 ### How to Run These codes
+> [!IMPORTANT]
+> Guidelines based on Linux OS.
+
 Since this code utilizes multi-GPU we have written two scripts that make it possible to run it on a computer that supports
 multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
 
