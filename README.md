@@ -7,7 +7,7 @@ Code modified to *extend* the existing Prompt4NR framework. For the original cod
 </p>
 
 
-### The Prompt4NR Framework - Extended
+### The Prompt4NR Framework - *Extended*
 
 ### Directory Structure: 
 12 directories correspond to 12 prompt templates three types (Discrete, Continuous, Hybrid) of templates from four perspectives (Relevance, Emotion, Action, Utility)
