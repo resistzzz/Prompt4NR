@@ -32,15 +32,15 @@ We have shared our preprocessed dataset on Google Drive as follows:
 * <a href="https://drive.google.com/drive/folders/1Gde-KkJc0szwSIXS6y3IfBxbyzY0yjnh?usp=sharing" target="_blank" rel="noopener noreferrer">Small (~12k)</a>
 
 ### How to Run These codes
-Since thise code utilizes multi-GPU we have wrote two scripts that make it possible to run it on a computer that supports
+Since this code utilizes multi-GPU we have written two scripts that make it possible to run it on a computer that supports
 multi-GPU or on the Dutch National supercomputer hosted at SURF (if you have credentials) called Snellius <a href="https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial1/Lisa_Cluster.html" target="_blank" rel="noopener noreferrer">Snellius</a>
 
 * **General machine:** the bash script that runs the code to train and predict is located at ```Discrete-Action/discrete-action_train_predict.sh```. Go this its directory and execute this script ```./discrete-action_train_predict.sh```.
 
-* **Snellius:** the job file the runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
+* **Snellius:** the job file that runs the code to train and predict is located at ```batch_jobs/Discrete-Action/discrete-action_train_predict.job```. Go to its directory and push the job file to the batch node ```sbatch discrete-action_train_predict.job```.
 
-In all files the line to run the scripts contains flags to for the experiments settings (such as hyperparameters) but also which prompt-template to experiment with.
-arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. 
+In all files the line to run the script contains flags to for the experiments settings (such as hyperparameters) but also which prompt-template to experiment with.
+arguments that use variables recognizable by the ```$``` sign should remain untouched as these intend to automatically generate correct path names. Other flags' arguments can be set as desired.
 An example is as follows:
 ```
 python3 -u main-multigpu.py --cluster_data_avail True --prompt_type original --data_path $TMPDIR$DATA_SET --model_name $MODEL_NAME --epochs 3 --batch_size 16 --test_batch_size 100 --wd 1e-3 --max_tokens 500 --log True --world_size 4 --model_save True
