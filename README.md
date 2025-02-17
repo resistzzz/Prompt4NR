@@ -32,6 +32,12 @@ I have shared our preprocessed dataset on Google Drive as follows:
 
 <https://drive.google.com/drive/folders/1_3ffZvEPKD5deHbTU_mVGp6uEaLhyM7c?usp=sharing>
 
+### Model Checkpoints
+
+I have shared our trained model checkpoints on Google Drive as follows:
+
+<https://drive.google.com/drive/folders/1e-nZUw3X0UqEOL8bSWKWfySLFj_PSsuL?usp=sharing>
+
 ### How to Run These codes
 In each directory, there is a script called ``run.sh`` that can run the codes for the corresponding template.
 Take “Discrete-Relevance” template as an example, the ``run.sh`` file is shown as follows:
